@@ -10,6 +10,10 @@
 
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+  
+    <!-- Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
    
     <title>Bantay Sakay</title>
 </head>
@@ -19,21 +23,22 @@
         <div class="nav-wrapper">
             <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="/trains">Trains</a></li>
-                <li><a href="/stations">Stations</a></li>
-                <li><a href="/navigator">Navigator</a></li>
+                <li><a href="/#/trains">Trains</a></li>
+                <li><a href="/#/stations">Stations</a></li>
+                <li><a href="/#/navigator">Navigator</a></li>
             </ul>
         </div>
     </nav>
 
     <ul class="sidenav" id="mobile-nav">
-        <li><a href="/trains">Trains</a></li>
-        <li><a href="/trains">Stations</a></li>
-        <li><a href="/trains">Navigator</a></li>    
+        <li><a href="/#/trains">Trains</a></li>
+        <li><a href="/#/stations">Stations</a></li>
+        <li><a href="/#/navigator">Navigator</a></li>    
     </ul>
 
-    <!-- Vue.js -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <div id="app">
+        <router-view></router-view>
+    </div>
 
     <!-- Materialize CSS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>

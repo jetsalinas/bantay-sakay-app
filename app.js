@@ -1,6 +1,24 @@
-
+//Initialize mobile side nav
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('henlo world')
     var elems = document.querySelectorAll('.sidenav');
     var instances = M.Sidenav.init(elems, draggable=true)
 })
+
+const NotFound = { template: '<p>Page not found</p>' }
+const HomeComponent = { template: '<p>Hello page</p>' }
+const TrainsComponent = { template: '<p>Trains page</p>' }
+const StationsComponent = { template: '<p>Stations page</p>' }
+const NavigatorComponent = { template: '<p>Navigator page</p>' }
+
+const routes = [
+    { path: '/', component: HomeComponent },
+    { path: '/trains', component: TrainsComponent },
+    { path: '/stations', component: StationsComponent },
+    { path: '/navigator', component: NavigatorComponent }
+];
+
+const router = new VueRouter({ routes });
+
+const app = new Vue({
+    router
+}).$mount('#app')
