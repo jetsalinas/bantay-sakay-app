@@ -79,4 +79,7 @@ body {
 
 .h-menu {
     height: 2.5rem;
+    position: relative;
+    top: 1rem;
+    left: 1rem;
 }
