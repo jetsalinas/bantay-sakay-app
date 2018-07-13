@@ -50,22 +50,31 @@
     <div class="flex flex-wrap ph5">
 
       <!-- Introduction div -->
-      <div class="fl w-100 w-50-ns pv3 ph3 shadow-1 mv3">
+      <div class="fl w-100 pv3 ph5 shadow-1 mv3">
         <div id="app-station-statistics">
-          <div class="fl w-50">
-
+          <h1>Station Overview</h1>
+          <div v-if="selectedStation">
+              <h2 class="i">{{ selectedStation }} Station</h2>
+              <div class="fl w-50">
+                <h2>{{ loadNorth }} %</h2>
+                <p class="i">Northbound Passenger Volume</p>
+              </div>
+              <div class="fl w-50">
+                <h2>{{ loadSouth }} %</h2>
+                <p class="i">Southbound Passenger Volume</p>
+              </div>
           </div>
-          <div class="fl w-50">
-            
+          <div v-else>
+            <p class="i">Please select a station.</p>
           </div>
         </div>
       </div>
 
-      <div class="fl w-100 w-50-ns pv3 ph3 shadow-1 mv3">
+      <div class="fl w-100 pv3 ph5 shadow-1 mv3 mh1">
           <div id="app-global-statistics">
             <h1>System Overview</h1>
             <div class="fl w-50">
-              <h2>{{ globalCycleTime }}</h2>
+              <h2>{{ globalStatus }}</h2>
               <p class="i">System Status</p>
             </div>
             <div class="fl w-50">

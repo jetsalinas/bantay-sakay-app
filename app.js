@@ -1,3 +1,4 @@
+// Navbar Toggle button
 var slideout = new Slideout({
     'panel': document.getElementById('panel'),
     'menu': document.getElementById('menu'),
@@ -5,13 +6,12 @@ var slideout = new Slideout({
     'tolerance': 70
 });
 
-// Toggle button
 document.querySelector('.toggle-button').addEventListener('click', function () {
     slideout.toggle();
 });
 
 
-//Train selector functions
+// Navbar Station Selection Scripts
 var trainNodes = document.querySelectorAll('.train');
 
 var hideNodes = function(e) {
@@ -29,7 +29,10 @@ for (var i = 0; i < trainNodes.length; i++) {
 var stationStats = new Vue({
     el: "#app-station-statistics",
     data: {
-        isNorth: true
+        isNorth: true,
+        selectedStation: "Baclaran",
+        loadNorth: 75.1,
+        loadSouth: 63.2
     }
 })
 
