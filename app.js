@@ -79,8 +79,6 @@ var updateData = function() {
     });
 }
 
-updateData();
-
 // Navbar Station Selection Scripts
 var trainNodes = document.querySelectorAll('.train');
 
@@ -97,4 +95,7 @@ var hideNodes = function(e) {
 
 for (var i = 0; i < trainNodes.length; i++) {
     trainNodes[i].addEventListener("click", hideNodes, false);
-  }
+}
+
+updateData();
+setInterval(updateData, 3000);
