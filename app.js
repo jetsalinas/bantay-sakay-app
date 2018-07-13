@@ -1,14 +1,3 @@
-/* Set the width of the side navigation to 0 */
-function toggleNav() {
-    if (document.getElementById("station-nav-container").style.width == "0px") {
-        document.getElementById("station-nav-container").style.width = "25%";
-        document.getElementById("station-nav").style.display = "inline-block";
-    } else {
-        document.getElementById("station-nav-container").style.width = "0px";
-        document.getElementById("station-nav").style.display = "none";
-    }
-}
-
 var slideout = new Slideout({
     'panel': document.getElementById('panel'),
     'menu': document.getElementById('menu'),
@@ -21,9 +10,29 @@ document.querySelector('.toggle-button').addEventListener('click', function () {
     slideout.toggle();
 });
 
-var app = new Vue({
-    el: "#app",
-    data: {
-        isNorth: true
+var trainNodes = document.querySelectorAll('.train');
+
+var hideNodes = function(e) {
+    for (var i = 0; i < trainNodes.length; i++) {
+        trainNodes[i].classList.add('train-inactive')
     }
-})
+    e.target.classList.remove('train-inactive');
+}
+
+for (var i = 0; i < trainNodes.length; i++) {
+    trainNodes[i].addEventListener("click", hideNodes, false);
+  }
+
+// var appMenu = new Vue({
+//     el: "#app-menu",
+//     data: {
+//         isNorth: true
+//     }
+// })
+
+// var appView = new Vue({
+//     el: "#app-view",
+//     data: {
+
+//     }
+// })
