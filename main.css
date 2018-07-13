@@ -1,0 +1,29 @@
+.cabin {
+    font-family: "Cabin", sans-serif;
+}
+
+.train::before {
+    height: 2rem;
+    width: 2rem;
+    margin-right: 0.25rem;
+}
+
+.train-inactive {
+    opacity: 0.3;
+}
+
+.train-light-b::before {
+    content: url('train-light-b.svg');
+}
+
+.train-light::before {
+    content: url('train-light.svg');
+}
+
+.train-light-e::before {
+    content: url('train-light-e.svg');
+}
+
+.train-active.train-light::before {
+    content: url('train-active-light.svg')
+}
