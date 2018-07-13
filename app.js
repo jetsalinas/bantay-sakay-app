@@ -1,29 +1,10 @@
-//Initialize mobile side nav
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(elems, draggable=true)
-})
-
-// Pages
-
-const HomeComponent = { template: `<p>Hello page</p>` }
-const TrainsComponent = { template: `<p>Trains page</p>` }
-const StationsComponent = { template: `<p>Stations page</p>` }
-const NavigatorComponent = { template: `<p>Navigator page</p>` }
-
-// Routing
-
-const routes = [
-    { path: '/', component: HomeComponent },
-    { path: '/trains', component: TrainsComponent },
-    { path: '/stations', component: StationsComponent },
-    { path: '/navigator', component: NavigatorComponent }
-];
-
-const router = new VueRouter({ routes });
-
-// App
-
-const app = new Vue({
-    router
-}).$mount('#app')
+/* Set the width of the side navigation to 0 */
+function toggleNav() {
+    if (document.getElementById("station-nav-container").style.width == "0px") {
+        document.getElementById("station-nav-container").style.width = "25%";
+        document.getElementById("station-nav").style.display = "inline-block";
+    } else {
+        document.getElementById("station-nav-container").style.width = "0px";
+        document.getElementById("station-nav").style.display = "none";
+    }
+} 

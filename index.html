@@ -3,64 +3,66 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Page Title</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Bantay Sakay</title>
+
   <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
   <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin">
 </head>
 <body class="flex content-stretch items-stretch cabin">
 
+  <div id="nav-trigger" onclick="toggleNav()">
+      <img src="assets/img/menu-close.svg" class="h2 mr2">
+  </div>
 
-  <header class="bg-black-90 w-100 ph3 pv3 pv4-ns ph4-m ph5-l">
-    <nav class="f6 fw6 ttu tracked">
-      <a class="link dim white dib mr3" href="#" title="Home">Home</a>
-      <a class="link dim white dib mr3" href="#" title="About">About</a>
-      <a class="link dim white dib mr3" href="#" title="Store">Store</a>
-      <a class="link dim white dib" href="#" title="Contact">Contact</a>
-    </nav>
-  </header>
-
-  <section class="white bg-black-90 w-25 vh-100">
-    <h1 class="mt3 mb0 flex items-center">
-      <img src="assets/img/menu-close.svg" class="h2 mr2"> To Baclaran
-    </h1>
-    <ul class="list pa0 ml4 pl3 mv2">
-      <li class="mv0 flex items-center train train-light-b">Roosevelt</li>
-      <li class="mv0 flex items-center train train-light">Balintawak</li>
-      <li class="mv0 flex items-center train train-light">Monumento</li>
-      <li class="mv0 flex items-center train train-light">5th Avenue</li>
-      <li class="mv0 flex items-center train train-light">R. Papa</li>
-      <li class="mv0 flex items-center train train-light">Abad Santos</li>
-      <li class="mv0 flex items-center train train-light">Blumentritt</li>
-      <li class="mv0 flex items-center train train-light">Tayuman</li>
-      <li class="mv0 flex items-center train train-light">Bambang</li>
-      <li class="mv0 flex items-center train train-light">Doroteo Jose</li>
-      <li class="mv0 flex items-center train train-light">Carriedo</li>
-      <li class="mv0 flex items-center train train-light">Central Terminal</li>
-      <li class="mv0 flex items-center train train-light">United Nations</li>
-      <li class="mv0 flex items-center train train-light">Pedro Gil</li>
-      <li class="mv0 flex items-center train train-light">Quirino</li>
-      <li class="mv0 flex items-center train train-light">Vito Cruz</li>
-      <li class="mv0 flex items-center train train-light">Gil Puyat</li>
-      <li class="mv0 flex items-center train train-light">Libertad</li>
-      <li class="mv0 flex items-center train train-light">EDSA</li>
-      <li class="mv0 flex items-center train train-light-e">Baclaran</li>
-    </ul>
+  <section class="white bg-black-90 w-25 vh-100" id="station-nav-container">
+    <div id="station-nav">
+        <ul class="list pa0 ml4 pl3 mv2">
+          <li class="mv0 flex items-center train train-light-b">Roosevelt</li>
+          <li class="mv0 flex items-center train train-light">Balintawak</li>
+          <li class="mv0 flex items-center train train-light">Monumento</li>
+          <li class="mv0 flex items-center train train-light">5th Avenue</li>
+          <li class="mv0 flex items-center train train-light">R. Papa</li>
+          <li class="mv0 flex items-center train train-light">Abad Santos</li>
+          <li class="mv0 flex items-center train train-light">Blumentritt</li>
+          <li class="mv0 flex items-center train train-light">Tayuman</li>
+          <li class="mv0 flex items-center train train-light">Bambang</li>
+          <li class="mv0 flex items-center train train-light">Doroteo Jose</li>
+          <li class="mv0 flex items-center train train-light">Carriedo</li>
+          <li class="mv0 flex items-center train train-light">Central Terminal</li>
+          <li class="mv0 flex items-center train train-light">United Nations</li>
+          <li class="mv0 flex items-center train train-light">Pedro Gil</li>
+          <li class="mv0 flex items-center train train-light">Quirino</li>
+          <li class="mv0 flex items-center train train-light">Vito Cruz</li>
+          <li class="mv0 flex items-center train train-light">Gil Puyat</li>
+          <li class="mv0 flex items-center train train-light">Libertad</li>
+          <li class="mv0 flex items-center train train-light">EDSA</li>
+          <li class="mv0 flex items-center train train-light-e">Baclaran</li>
+        </ul>
+    </div>
+    
   </section>
 
-  <section class="flex flex-wrap black bg-near-white w-75 bh-100 pa4">
-    <div class="bg-black-20 w-50">
-      <p>choo-choo 🚆</p>
-    </div>
-    <div class="bg-black-30 w-50">
-      <p>i booped the twinko</p>
-    </div>
-    <div class="bg-black-40 w-100">
-      <p>boop!!!!</p>
-    </div>
-  </section>
 
-  <script src="main.js"></script>
+  <div id="main">
+
+      <section class="flex flex-wrap black bg-near-white w-75 bh-100 pa4">
+        <div class="bg-black-20 w-50">
+          <p>choo-choo 🚆</p>
+        </div>
+        <div class="bg-black-30 w-50">
+          <p>i booped the twinko</p>
+        </div>
+        <div class="bg-black-40 w-100">
+          <p>boop!!!!</p>
+        </div>
+      </section>
+
+  </div>
+
+
+  <script src="app.js"></script>
 </body>
 </html>

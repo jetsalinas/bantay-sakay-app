@@ -1,3 +1,30 @@
+#nav-trigger {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 3rem;
+    height: 3rem;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+#station-nav-container {
+    width: 0;
+    transition: 0.5s;
+}
+
+#station-nav {
+    margin-top: 5rem;
+    display: none;
+}
+
 .cabin {
     font-family: "Cabin", sans-serif;
 }
@@ -11,6 +38,8 @@
 .train-inactive {
     opacity: 0.3;
 }
+
+/* SVG assets*/
 
 .train-light-b::before {
     content: url('assets/img/train-light-b.svg');
