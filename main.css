@@ -13,17 +13,17 @@
 }
 
 .train-light-b::before {
-    content: url('train-light-b.svg');
+    content: url('assets/img/train-light-b.svg');
 }
 
 .train-light::before {
-    content: url('train-light.svg');
+    content: url('assets/img/train-light.svg');
 }
 
 .train-light-e::before {
-    content: url('train-light-e.svg');
+    content: url('assets/img/train-light-e.svg');
 }
 
 .train-active.train-light::before {
-    content: url('train-active-light.svg')
+    content: url('assets/img/train-active-light.svg')
 }
