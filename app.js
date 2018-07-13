@@ -20,3 +20,10 @@ var slideout = new Slideout({
 document.querySelector('.toggle-button').addEventListener('click', function () {
     slideout.toggle();
 });
+
+var app = new Vue({
+    el: "#app",
+    data: {
+        isNorth: true
+    }
+})
