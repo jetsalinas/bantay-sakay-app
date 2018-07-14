@@ -42,7 +42,7 @@ var featuredTrips = new Vue({
         "selectTrip": function (tripName) {
             for (trip in featuredTrips.tripsData) {
                 if (featuredTrips.tripsData[trip].name == tripName) {
-                    //featuredTrips.selectedTrip = featuredTrips.tripsData[trip];
+                    featuredTrips.states.selectedTrip = featuredTrips.tripsData[trip];
                     featuredTrips.hasSelected = !(featuredTrips.hasSelected);
                 }
             }
@@ -170,10 +170,10 @@ var resetNodes = function () {
 
 var closeStationView = function () {
     states.selectedStation = null;
+    states.selectedTrip = null;
+    states.selectedAttraction = null;
     menuBar.title = "Bantay Sakay";
     menuBar.displayBack = false;
-    attractionsGeneral.selectedStation = null;
-
     resetNodes();
 };
 

@@ -154,18 +154,35 @@
 
     <!-- Stats/Featured Trips -->
     <div id="app-featured-trips">
-      <h2 class="ttu mh6 mv4 f5">Featured Trips</h2>
-      <div class="mv4 ph6 w-100 flex flex-wrap items-center">
-        <div class="w5 ba b--black-40 br2 mr4" v-for="trip in tripsData">
-          <div class="aspect-ratio aspect-ratio--16x9 br2 br--top">
-            <div class="aspect-ratio--object cover" v-bind:style="{ backgroundColor: '#000000' }"></div>
+      <div v-if="!states.selectedStation">
+        <h2 class="ttu mh6 mv4 f5" >Featured Trips</h2>
+        <div class="mv4 ph6 w-100 flex flex-wrap items-center">
+          <div class="w5 ba b--black-40 br2 mr4" v-for="trip in tripsData" v-if="(!states.selectedTrip)" v-on:click="selectTrip(trip.name)">
+              <div class="aspect-ratio aspect-ratio--16x9 br2 br--top">
+                <div class="aspect-ratio--object cover" v-bind:style="{ backgroundColor: '#000000' }"></div>
+              </div>
+              <div class="card-bottom ph3 mv2 h4 overflow-y-hidden">
+                <h3 class="f3 mt2 mb0 truncate">{{ trip.name }}</h3>
+                <p class="mv1 lh-copy f6">{{ trip.description }}</p>
+              </div>
           </div>
-          <div class="card-bottom ph3 mv2 h4 overflow-y-hidden">
-            <h3 class="f3 mt2 mb0 truncate">{{ trip.name }}</h3>
-            <p class="mv1 lh-copy f6">{{ trip.description }}</p>
-          </div>
-          <div v-if="hasSelected" class="pa3 mr4 mw5 ba b--black-40 br2">
-            Hnl
+          <!-- Show trip details once selected -->
+          <div v-if="(states.selectedTrip)" class="pa3 w-100 ba b--black-40 br2 mr4">
+            <h1 class="">{{ states.selectedTrip.name }}</h1>
+            <p>{{ states.selectedTrip.description }}</p>
+            <h3>In this trip: </h3>
+            <div class="mv4 ph2 w-100 flex flex-wrap">
+              <div class="w5 ba b--black-40 br2 mr4" v-for="node in states.selectedTrip.nodes">
+                <div class="aspect-ratio aspect-ratio--16x9 br2 br--top">
+                  <div class="aspect-ratio--object cover" v-bind:style="{ background: 'url(' + node.attraction.imageUrl + ')' }"></div>
+                </div>
+                <div class="card-bottom ph3 mv2 h4 overflow-y-hidden">
+                  <h3 class="f3 mt2 mb0 truncate"> {{ node.attraction.name}} name </h3>
+                  <p class="mv1 f6 flex items-center">
+                    <i class="material-icons md-18 mr1">train</i> {{ node.attraction.stationName }} </p>
+                  <p class="lh-copy f7 mt2"> {{ node.attraction.description }} </p>
+                </div>
+              </div>
           </div>
         </div>
       </div>
