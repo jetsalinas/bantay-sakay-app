@@ -51,12 +51,13 @@
     <div class="flex flex-wrap ph5">
 
       <!-- Introduction div -->
-<<<<<<< HEAD
-      <div class="fl w-100 pv3 ph5 shadow-1 mv3">
-        <div id="app-station-statistics">
+      <div class="fl w-100 pv3 ph5 shadow-1 mv3" v-if="selectedStation" id="app-station-statistics">
+        <div>
           <h1>Station Overview</h1>
           <div v-if="selectedStation">
-            <div class="fl ph3 v-mid mdi mdi-chevron-left" id="closeStationBtn" onclick="closeStationView()"><i class="material-icons">chevron_left</i></div>
+            <div class="fl ph3 v-mid mdi mdi-chevron-left" id="closeStationBtn" onclick="closeStationView()">
+              <i class="material-icons">chevron_left</i>
+            </div>
             <h2 class="i">{{ selectedStation }} Station</h2>
             <div class="fl w-50">
               <h2>{{ loadNorth }} %</h2>
@@ -74,16 +75,6 @@
               <h2>{{ secondTrainTime }}</h2>
               <p class="i">ETA following train</p>
             </div>
-=======
-      <div class="w-100 pv3 ph5 shadow-1 mv3" id="app-station-statistics" v-if="selectedStation">
-        <h1>Station Overview</h1>
-        <div>
-          <div class="ph3 v-mid" id="closeStationBtn" onclick="closeStationView()">&lt -</div>
-          <h2 class="i">{{ selectedStation }} Station</h2>
-          <div class="w-50">
-            <h2>{{ loadNorth }} %</h2>
-            <p class="i">Northbound Passenger Volume</p>
->>>>>>> 7014f7e2c5d5babde9afdc9142004a9c20197222
           </div>
           <div class="w-50">
             <h2>{{ loadSouth }} %</h2>
