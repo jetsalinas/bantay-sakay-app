@@ -31,6 +31,14 @@ var globalStats = new Vue({
     }
 })
 
+var tripStats = new Vue({
+
+});
+
+var attractionStats = new Vue({
+
+});
+
 var featuredTrips = new Vue({
     el: "#app-featured-trips",
     data: {
@@ -150,6 +158,7 @@ var selectStationView = function (e) {
         trainNodes[i].classList.add('train-inactive')
         trainNodes[i].classList.remove('train-active');
     }
+    states.currentView = "station";
     e.target.classList.remove('train-inactive');
     e.target.classList.add('train-active');
     stationsData.selectedIndex = parseInt(e.target.dataset.index);
@@ -160,6 +169,15 @@ var selectStationView = function (e) {
     menuBar.displayBack = true;
 }
 
+var selectTripView = function (e) {
+    states.currentView = "trip";
+    tripName = e.dataset.name;
+    console.log(featuredTrips.tripsData);
+    for (trip in featuredTrips.tripsData) {
+        console.log(featuredTrips.tripsData[trip]);
+    }
+}
+
 var resetNodes = function () {
     var trainNodes = document.querySelectorAll('.train');
     for (var i = 0; i < trainNodes.length; i++) {
@@ -168,7 +186,8 @@ var resetNodes = function () {
     }
 }
 
-var closeStationView = function () {
+var closeView = function () {
+    states.currentView = "global"
     states.selectedStation = null;
     states.selectedTrip = null;
     states.selectedAttraction = null;
@@ -184,14 +203,6 @@ var closeStationView = function () {
 var trainNodes = document.querySelectorAll('.train');
 for (var i = 0; i < trainNodes.length; i++) {
     trainNodes[i].addEventListener("click", selectStationView, false);
-}
-
-var selectTrip = function (e) {
-    tripName = e.dataset.name;
-    console.log(featuredTrips.tripsData);
-    for (trip in featuredTrips.tripsData) {
-        console.log(featuredTrips.tripsData[trip]);
-    }
 }
 
 updateData();
