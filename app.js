@@ -22,6 +22,13 @@ var globalStats = new Vue({
     }
 })
 
+var featuredTrips = new Vue({
+    el: "#app-featured-trips",
+    data: {
+        "tripsData": [],
+    }
+});
+
 var menuBar = new Vue({
     el: "#menu-bar",
     data: {
@@ -99,7 +106,17 @@ var updateData = function () {
     }).catch(error => {
     });
 
-    console.log(attractionsData);
+    request = new Request(tripsUrl, { method: 'GET' });
+    fetch(request).then(response => {
+        if (response.status === 200) {
+            return response.json();
+        } else {
+            console.log("API server could not be reached");
+        }
+    }).then(data => {
+        featuredTrips.tripsData = data;
+    }).catch(error => {
+    });
 }
 
 var selectStationView = function (e) {
@@ -145,6 +162,21 @@ var closeStationView = function () {
 var trainNodes = document.querySelectorAll('.train');
 for (var i = 0; i < trainNodes.length; i++) {
     trainNodes[i].addEventListener("click", selectStationView, false);
+}
+
+var displayTrip = new Vue({
+    el: "#app-selected-trip",
+    data: {
+        "selectedTrip": []
+    }
+});
+
+var selectTrip = function(e) {
+    tripName = e.dataset.name;
+    console.log(featuredTrips.tripsData);
+    for(trip in featuredTrips.tripsData) {
+        console.log(featuredTrips.tripsData[trip]);
+    }
 }
 
 updateData();
