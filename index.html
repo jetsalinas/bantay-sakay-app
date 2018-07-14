@@ -147,7 +147,7 @@
       <h2 class="ttu mh6 mv4 f5">Featured Trips</h2>
       <div class="mv4 ph6 w-100 flex flex-wrap items-center">
         <card-trip v-for="trip in tripsData" v-bind:key="trip.name" v-bind:image="trip.imageUrl" v-bind:name="trip.name" v-bind:description="trip.description"
-          v-on:click="selectTrip(trip.name)"></card-trip>
+          v-on:click.native="selectTrip(trip.name)"></card-trip>
       </div>
     </div>
 
@@ -156,7 +156,7 @@
       <h2 class="ttu mh6 mv4 f5">Attractions</h2>
       <div class="mv4 ph6 w-100 flex flex-wrap items-center">
         <card-attraction v-for="attraction in attractionsData" v-bind:key="attraction.name" v-bind:image="attraction.imageUrl" v-bind:name="attraction.name"
-          v-bind:station-name="attraction.stationName" v-bind:description="attraction.description"></card-attraction>
+          v-bind:station-name="attraction.stationName" v-bind:description="attraction.description"  v-on:click.native="selectAttraction(attraction.name)"></card-attraction>
       </div>
     </div>
 
