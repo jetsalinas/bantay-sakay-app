@@ -40,6 +40,13 @@ var featuredTrips = new Vue({
     }
 });
 
+var featuredAttractions = new Vue({
+    el: "#app-featured-attractions",
+    data: {
+
+    }
+})
+
 var menuBar = new Vue({
     el: "#menu-bar",
     data: {
