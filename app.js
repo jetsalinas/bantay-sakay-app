@@ -19,7 +19,9 @@ var stationStats = new Vue({
         selectedStation: null,
         selectedIndex: null,
         loadNorth: 75.1,
-        loadSouth: 63.2
+        loadSouth: 63.2,
+        firstTrainTime: 3.5,
+        secondTrainTime: 5.5
     }
 })
 
@@ -86,8 +88,10 @@ var trainNodes = document.querySelectorAll('.train');
 var hideNodes = function(e) {
     for (var i = 0; i < trainNodes.length; i++) {
         trainNodes[i].classList.add('train-inactive')
+        trainNodes[i].classList.remove('train-active');
     }
     e.target.classList.remove('train-inactive');
+    e.target.classList.add('train-active');
     stationsData.selectedIndex = parseInt(e.target.dataset.index);
     stationStats.selectedStation = stationsData[stationsData.selectedIndex].name;
     globalStats.selectedStation = stationsData[stationsData.selectedIndex].name;
@@ -100,4 +104,4 @@ for (var i = 0; i < trainNodes.length; i++) {
 }
 
 updateData();
-setInterval(updateData, 3000);
+setInterval(updateData, 1000*60*10);
