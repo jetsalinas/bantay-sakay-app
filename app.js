@@ -102,6 +102,7 @@ var hideNodes = function(e) {
 var resetNodes = function() {
     for (var i = 0; i < trainNodes.length; i++) {
         trainNodes[i].classList.remove('train-inactive');
+        trainNodes[i].classList.remove('train-active');
     }
 }
 
@@ -109,6 +110,7 @@ var closeStationView = function(){
     stationStats.selectedStation = null;
     stationStats.selectedIndex = null;
     globalStats.selectedStation = null;
+    resetNodes();
 };
 
 for (var i = 0; i < trainNodes.length; i++) {
