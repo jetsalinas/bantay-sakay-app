@@ -44,13 +44,14 @@
   <section id="panel" class="flex flex-column items-stretch flex-wrap black bg-white w-100 bh-100">
 
     <!-- Menu toggle -->
-    <div class="mv2 relative">
-      <img src="assets/img/menu-close.svg" class="h-menu pa2 toggle-button">
+    <div class="mv3 flex items-center">
+      <img src="assets/img/menu-close.svg" class="h-menu pv2 ph0 toggle-button">
     </div>
 
     <div class="flex flex-wrap ph5">
 
       <!-- Introduction div -->
+<<<<<<< HEAD
       <div class="fl w-100 pv3 ph5 shadow-1 mv3">
         <div id="app-station-statistics">
           <h1>Station Overview</h1>
@@ -73,55 +74,72 @@
               <h2>{{ secondTrainTime }}</h2>
               <p class="i">ETA following train</p>
             </div>
+=======
+      <div class="w-100 pv3 ph5 shadow-1 mv3" id="app-station-statistics" v-if="selectedStation">
+        <h1>Station Overview</h1>
+        <div>
+          <div class="ph3 v-mid" id="closeStationBtn" onclick="closeStationView()">&lt -</div>
+          <h2 class="i">{{ selectedStation }} Station</h2>
+          <div class="w-50">
+            <h2>{{ loadNorth }} %</h2>
+            <p class="i">Northbound Passenger Volume</p>
+>>>>>>> 7014f7e2c5d5babde9afdc9142004a9c20197222
           </div>
-          <div v-else>
-            <p class="i">Please select a station.</p>
+          <div class="w-50">
+            <h2>{{ loadSouth }} %</h2>
+            <p class="i">Southbound Passenger Volume</p>
+          </div>
+          <div class="w-50">
+            <h2>{{ firstTrainTime }}</h2>
+            <p class="i">ETA next train</p>
+          </div>
+          <div class="w-50">
+            <h2>{{ secondTrainTime }}</h2>
+            <p class="i">ETA following train</p>
           </div>
         </div>
       </div>
 
-    <div class="fl w-100" id="app-global-statistics">
-      <div v-if="!selectedStation" class="fl w-100 pv3 ph5 shadow-1 mv3 mh1">
-        <h1>System Overview</h1>
-        <div class="fl w-50">
-          <h2>{{ globalStatus }}</h2>
-          <p class="i">System Status</p>
+      <div class="flex w-100 mv4" id="app-global-statistics" v-if="!selectedStation">
+        <div class="flex items-center">
+          <img src="assets/img/death-01.svg" class="h5 mh6">
         </div>
-        <div class="fl w-50">
-          <h2>{{ globalTrains }} Trains</h2>
-          <p class="i">Trains Available</p>
+        <div class="flex-auto">
+          <div class="w-100 mb3">
+            <h2 class="f2 mv1">{{ globalStatus }}</h2>
+          </div>
+          <div class="flex items-center w-100 ml4 mv2">
+            <img src="assets/img/train-icon.svg" class="h2 mr2">
+            <h2 class="mr4 mv0">To Baclaran</h2>
+            <p class="ma0">HEAVY</p>
+          </div>
+          <div class="flex items-center w-100 ml4 mv2">
+            <img src="assets/img/train-icon.svg" class="h2 mr2">
+            <h2 class="mr4 mv0">To Roosevelt</h2>
+            <p class="ma0">HEAVY</p>
+          </div>
+          <div class="flex w-100 ml4 mt4">
+            <div class="mr5">
+              <h2 class="mv0">{{ globalTrains }}</h2>
+              <p class="mv1 black-80 f6 ">trains available</p>
+            </div>
+            <div class="mr5">
+              <h2 class="mv0">{{ globalHeadwayTime }} min</h2>
+              <p class="mv1 black-80 f6">Headway</p>
+            </div>
+            <div class="mr5">
+              <h2 class="mv0">{{ globalCycleTime }} hrs</h2>
+              <p class=" mv1 black-80 f6 ">Cycle time</p>
+            </div>
+          </div>
         </div>
-        <div class="fl w-50">
-          <h2>{{ globalHeadwayTime }} Minutes</h2>
-          <p class="i">Average Headway Time</p>
-        </div>
-        <div class="fl w-50">
-          <h2>{{ globalCycleTime }} Hours</h2>
-          <p class="i">Average Cycle Time</p>
-        </div>
-
       </div>
-    </div>
-
-    <div class="fl w-100 pv3 ph5 shadow-1 mv3">
-      <h1>News</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, sapiente nam laudantium aliquid at temporibus iste
-        possimus quaerat nisi impedit quasi, aliquam rem, iure quia expedita rerum! Quidem ab architecto beatae quos est
-        molestiae dicta, dolores perferendis odit tempore. Molestias hic consequuntur cum vitae quo eius nisi nam omnis sint?
-      </p>
-    </div>
-    </div>
-
-
-
-
-
 
   </section>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-  <script src="app.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js "></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js "></script>
+  <script src="app.js "></script>
 
 </body>
 </html>

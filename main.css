@@ -43,6 +43,10 @@ body {
   display: block;
 }
 
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
 /* Fonts */
 
 .cabin {
@@ -136,6 +140,4 @@ body {
 .h-menu {
     height: 2.5rem;
     position: relative;
-    top: 1rem;
-    left: 1rem;
 }
