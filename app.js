@@ -39,7 +39,8 @@ var globalStats = new Vue({
 var attractionsGeneral = new Vue({
     el: "#app-attractions-general",
     data: {
-        attractionsData: []
+        attractionsData: [],
+        selectedStation: null
     }
 })
 
@@ -118,6 +119,7 @@ var hideNodes = function (e) {
     stationsData.selectedIndex = parseInt(e.target.dataset.index);
     stationStats.selectedStation = stationsData[stationsData.selectedIndex].name;
     globalStats.selectedStation = stationsData[stationsData.selectedIndex].name;
+    attractionsGeneral.selectedStation = stationsData[stationsData.selectedIndex].name;
     stationStats.loadNorth = Math.round(parseFloat(stationsData[stationsData.selectedIndex].loadNorth) * 100);
     stationStats.loadSouth = Math.round(parseFloat(stationsData[stationsData.selectedIndex].loadSouth) * 100);
 }
@@ -133,6 +135,7 @@ var closeStationView = function () {
     stationStats.selectedStation = null;
     stationStats.selectedIndex = null;
     globalStats.selectedStation = null;
+    attractionsGeneral.selectedStation = null;
     resetNodes();
 };
 

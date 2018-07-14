@@ -115,7 +115,7 @@
         </div>
       </div>
 
-      <div id="app-attractions-general">
+      <div id="app-attractions-general" v-if="!selectedStation">
         <div class="flex w-100 mh6 mv3 mv4">
           <div class="w-100" v-for="attractions in attractionsData">
             <div class="w-30 shadow-1">
