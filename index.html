@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
   <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin">
-  <link href="css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
 <body class="flex content-stretch items-stretch cabin">
@@ -55,7 +55,7 @@
         <div id="app-station-statistics">
           <h1>Station Overview</h1>
           <div v-if="selectedStation">
-            <div class="fl ph3 v-mid" id="closeStationBtn" onclick="closeStationView()">&lt -</div>
+            <div class="fl ph3 v-mid mdi mdi-chevron-left" id="closeStationBtn" onclick="closeStationView()"><i class="material-icons">chevron_left</i></div>
             <h2 class="i">{{ selectedStation }} Station</h2>
             <div class="fl w-50">
               <h2>{{ loadNorth }} %</h2>
