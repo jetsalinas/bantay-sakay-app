@@ -33,24 +33,22 @@
 
     <!-- Hero, Stats -->
     <div class="flex flex-wrap pt3 pb5 w-100 bg-black-05 bb b--black-10" id="app-global-statistics" v-if="states.currentView == 'global'">
-      <div class="mh6 flex items-center">
+      <div class="dn mh6 flex-ns items-center-ns">
         <img src="assets/img/death-01.svg" class="h5">
       </div>
-      <div>
+      <div class="mh5 mh0-ns">
         <div class="mb3">
-          <h2 class="f1 mv1">{{ globalStatus }}</h2>
+          <h2 class="f2 f1-ns mv1">{{ globalStatus }}</h2>
         </div>
         <div class="flex items-center ml4 mv2">
           <img src="assets/img/train-icon.svg " class="h2 mr2">
           <h2 class="mr4 mv0 w4-5">To Baclaran</h2>
-          <img src="assets/img/load-light.svg " class="ml2 h2">
-          <p class="black-70 ma0 f6 fw9">LIGHT</p>
+          <load load="heavy"></load>
         </div>
         <div class="flex items-center ml4 mv2">
           <img src="assets/img/train-icon.svg" class="h2 mr2">
           <h2 class="mr4 mv0 w4-5">To Roosevelt</h2>
-          <img src="assets/img/load-moderate.svg" class="ml2 h2">
-          <p class="black-70 ma0 f6 fw9">MODERATE</p>
+          <load load="heavy"></load>
         </div>
         <div class="flex ml4 mt4">
           <div class="mr5">
@@ -77,8 +75,7 @@
       <div id="station-left" class="mr5">
         <div class="flex items-center">
           <h2 class="mr4 mv0 w4-5">To Baclaran</h2>
-          <img src="assets/img/load-moderate.svg" class="ml2 h2">
-          <p class="black-70 ma0 f6 fw9">MODERATE</p>
+          <load load="light"></load>
         </div>
         <train-status focus="true" direction="SB" v-bind:time="etaFirstSouth"></train-status>
         <train-status direction="SB" v-bind:time="etaSecondSouth"></train-status>
@@ -86,8 +83,7 @@
       <div id="station-right">
         <div class="flex items-center">
           <h2 class="mr4 mv0 w4-5">To Roosevelt</h2>
-          <img src="assets/img/load-moderate.svg" class="ml2 h2">
-          <p class="black-70 ma0 f6 fw9">MODERATE</p>
+          <load load="light"></load>
         </div>
         <train-status focus="true" direction="NB" v-bind:time="etaFirstNorth"></train-status>
         <train-status direction="NB" v-bind:time="etaSecondNorth"></train-status>
@@ -132,7 +128,9 @@
 
     <!-- Hero, Attraction -->
     <div class="flex pt3 pb5 ph5 w-100 bg-black-05 bb b--black-10" id="app-attraction-stats" v-if="states.currentView == 'attractions'">
-      <div class="w-100 mr5"><img class="w-100 br4" v-bind:src="states.selectedAttraction.imageUrl" alt="" srcset=""></div>
+      <div class="w-100 mr5">
+        <img class="w-100 br4" v-bind:src="states.selectedAttraction.imageUrl" alt="" srcset="">
+      </div>
       <div class=" mw8">
         <h1>{{ states.selectedAttraction.name }}</h1>
         <p>{{ states.selectedAttraction.stationName }}</p>
@@ -148,7 +146,8 @@
     <div id="app-featured-trips" v-if="states.currentView == 'global' || states.currentView == 'trips' ">
       <h2 class="ttu mh6 mv4 f5">Featured Trips</h2>
       <div class="mv4 ph6 w-100 flex flex-wrap items-center">
-        <card-trip v-for="trip in tripsData" v-bind:key="trip.name" v-bind:image="trip.imageUrl" v-bind:name="trip.name" v-bind:description="trip.description"></card-trip>
+        <card-trip v-for="trip in tripsData" v-bind:key="trip.name" v-bind:image="trip.imageUrl" v-bind:name="trip.name" v-bind:description="trip.description"
+          v-on:click="selectTrip(trip.name)"></card-trip>
       </div>
     </div>
 

@@ -5,7 +5,7 @@ Vue.component('Navbar', {
   <div id="topleft" class="flex items-center">
     <div class="flex items-center mv2 mv1-ns">
 
-      <div class="mh3 pointer" id="closeBtn" v-if="showPointer" onclick="closeView()">
+      <div class="mh3 pointer dim" id="closeBtn" v-if="showPointer" onclick="closeView()">
         <i class="material-icons md-36 f2">arrow_back</i>
       </div>
       <slot></slot>
@@ -15,7 +15,7 @@ Vue.component('Navbar', {
 
   <!-- Right -->
   <div id="topright" class="flex items-center">
-    <i id="toggle-train-list" class="material-icons md-36 pointer">view_list</i>
+    <i id="toggle-train-list" class="material-icons md-36 pointer dim">view_list</i>
   </div>
 
 </div>
@@ -44,7 +44,7 @@ Vue.component('train-status', {
 });
 
 Vue.component('card', {
-  template: `<div class="w5 ba b--black-40 br2 mr4 v-bind:class="{pointer: clickable}" ">
+  template: `<div class="w5 ba b--black-40 br2 mr4" v-bind:class="{pointer: clickable, dim: clickable}">
   <div class="aspect-ratio aspect-ratio--16x9 br2 br--top">
     <div class="aspect-ratio--object cover" v-bind:style="{ background: 'url(' + image + ')' }"></div>
   </div>
@@ -71,4 +71,12 @@ Vue.component('card-attraction', {
   <p class="lh-copy f7 mt2">{{ description }}</p>
 </card>`,
   props: ['image', 'name', 'stationName', 'description']
+})
+
+Vue.component('load', {
+  template: `<div class="flex items-center">
+  <img v-bind:src="'assets/img/load-' + load + '.svg'" class="ml2 h2">
+  <p class="black-70 ma0 f6 fw9 ttu">{{ load }}</p>
+</div>`,
+  props: ['load']
 })

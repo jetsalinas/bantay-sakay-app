@@ -26,7 +26,7 @@ var globalStats = new Vue({
     el: "#app-global-statistics",
     data: {
         states: states,
-        globalStatus: "All systems go!",
+        globalStatus: "All stations go!",
         globalTrains: 29,
         globalHeadwayTime: 3.3,
         globalCycleTime: 1.5,
@@ -162,8 +162,8 @@ var updateData = function () {
             globalStats.globalStatus = "System down!";
         }
         globalStats.globalTrains = data.totalTrains;
-        globalStats.globalCycleTime = Math.round(data.cycleTime/60/60*100)/100;
-        globalStats.globalHeadwayTime = Math.round(data.headwayTime/60*100)/100;
+        globalStats.globalCycleTime = Math.round(data.cycleTime / 60 / 60 * 100) / 100;
+        globalStats.globalHeadwayTime = Math.round(data.headwayTime / 60 * 100) / 100;
     }).catch(error => {
     });
 
@@ -200,10 +200,6 @@ var updateData = function () {
         }
     }).then(data => {
         stationStats.etaData = data;
-        stationStats.etaFirstNorth = Math.round(data.etaFirstNorth/60*100)/100;
-        stationStats.etaSecondNorth = Math.round(data.etaSecondNorth/60*100)/100;
-        stationStats.etaFirstSouth = Math.round(data.etaFirstSouth/60*100)/100;
-        stationStats.etaSecondSouth = Math.round(data.etaSecondSouth/60*100)/100;
     }).catch(error => {
     });
 }
@@ -222,6 +218,10 @@ var selectStationView = function (e) {
     states.selectedStation = stationsData[stationsData.selectedIndex].name;
     stationStats.loadNorth = Math.round(parseFloat(stationsData[stationsData.selectedIndex].loadNorth) * 100);
     stationStats.loadSouth = Math.round(parseFloat(stationsData[stationsData.selectedIndex].loadSouth) * 100);
+    stationStats.etaFirstNorth = Math.round(stationStats.etaData.etaFirstNorth / 60 * 100) / 100;
+    stationStats.etaSecondNorth = Math.round(stationStats.etaData.etaSecondNorth / 60 * 100) / 100;
+    stationStats.etaFirstSouth = Math.round(stationStats.etaData.etaFirstSouth / 60 * 100) / 100;
+    stationStats.etaSecondSouth = Math.round(stationStats.etaData.etaSecondSouth / 60 * 100) / 100;
     menuBar.title = states.selectedStation;
     menuBar.displayBack = true;
 }
