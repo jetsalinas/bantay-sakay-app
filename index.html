@@ -22,25 +22,26 @@
   <section id="panel" class="flex flex-column flex-wrapitems-stretch black bg-white w-100 shadow-1">
 
     <!-- Top bar -->
-    <div id="top" class="flex flex-nowrap justify-between pv3-ns pv2 ph3 ph4-ns white bg-purple w-100 shadow-1">
+    <div id="top" class="flex flex-nowrap justify-between pv4 ph5 black bg-black-05 w-100">
       <!-- Left -->
       <div id="topleft" class="flex items-center">
         <div id="menu-bar" class="flex items-center mv2 mv1-ns">
           <div class="mh3 pointer" id="closeStationBtn" v-if="displayBack" onclick="closeStationView()">
             <i class="material-icons md-36 f2">arrow_back</i>
           </div>
-          <h1 class="ml3 mv0 f3 f2-ns">{{ title }}</h1>
+          <h1 class="flex items-center ml3 mv0 f3 dark-green">
+            <i class="material-icons md-36 mr3">train</i>{{ title }}</h1>
         </div>
       </div>
       <!-- Right -->
       <div id="topright" class="flex items-center">
-        <i id="toggle-train-list" class="material-icons md-36 pointer">train</i>
+        <i id="toggle-train-list" class="material-icons md-36 pointer">view_list</i>
       </div>
     </div>
 
     <!-- Hero, Stats -->
-    <div class="flex flex-wrap pv5 w-100 bg-black-05" id="app-global-statistics" v-if="!selectedStation">
-      <div class="mh6 flex items-center">
+    <div class="flex flex-wrap pt3 pb5 w-100 bg-black-05 bb b--black-10" id="app-global-statistics" v-if="!selectedStation">
+      <div class="ml6 mr5 flex items-center">
         <img src="assets/img/death-01.svg" class="h5">
       </div>
       <div>
@@ -77,8 +78,8 @@
     </div>
 
     <!-- Hero, Station -->
-    <div class="flex flex-wrap pv5 ph5 w-100 bg-black-05" id="app-station-statistics" v-if="selectedStation">
-      <div class="dn db-ns mh6 flex items-center">
+    <div class="flex flex-wrap pt3 pb5 ph5 w-100 bg-black-05 bb b--black-10" id="app-station-statistics" v-if="selectedStation">
+      <div class="dn db-ns ml6 mr5 flex items-center">
         <img src="assets/img/death-01.svg" class="h5">
       </div>
       <div id="station-left" class="mr5">
@@ -154,21 +155,14 @@
     <!-- Stats/Featured Trips -->
     <div id="app-featured-trips">
       <h2 class="ttu mh6 mv4 f5">Featured Trips</h2>
-      <div class="mv4 ph6 w-100 flex flex-wrap" v-if="hasSelected">
-        <h1>{{ selectedTrip.name }}</h1>
-        <h2>{{ selectedTrip.description }}</h2>
-        <div v-for="node in selectedTrip.nodes">
-          <p>{{ node.attraction.name }}</p>
-          <p class="i">{{ node.attraction.stationName }}</p>
-        </div>
-      </div>
-      <div class="">
-        <div class="mv4 ph6 w-100 flex flex-wrap">
-          <div v-for="trip in tripsData" class="mw5 ba b--black-40 br2">
-            <div>
-              <h2>{{ trip.name }}</h2>
-              <p>{{ trip.description }}</p>
-            </div>
+      <div class="mv4 ph6 w-100 flex flex-wrap items-center">
+        <div class="w5 ba b--black-40 br2 mr4" v-for="trip in tripsData">
+          <div class="aspect-ratio aspect-ratio--16x9 br2 br--top">
+            <div class="aspect-ratio--object cover" v-bind:style="{ backgroundColor: '#000000' }"></div>
+          </div>
+          <div class="card-bottom ph3 mv2 h4 overflow-y-hidden">
+            <h3 class="f3 mt2 mb0 truncate">{{ trip.name }}</h3>
+            <p class="mv1 lh-copy f6">{{ trip.description }}</p>
           </div>
         </div>
       </div>
@@ -186,7 +180,7 @@
             <h3 class="f3 mt2 mb0 truncate">{{ attraction.name }}</h3>
             <p class="mv1 f6 flex items-center">
               <i class="material-icons md-18 mr1">train</i>{{ attraction.stationName }}</p>
-            <p class="lh-copy f6">{{ attraction.address }}</p>
+            <p class="lh-copy f7 mt2">{{ attraction.description }}</p>
           </div>
         </div>
       </div>

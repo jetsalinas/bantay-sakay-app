@@ -143,7 +143,6 @@ var selectStationView = function (e) {
     stationsData.selectedIndex = parseInt(e.target.dataset.index);
     stationStats.selectedStation = stationsData[stationsData.selectedIndex].name;
     globalStats.selectedStation = stationsData[stationsData.selectedIndex].name;
-    attractionsGeneral.selectedStation = stationsData[stationsData.selectedIndex].name;
     stationStats.loadNorth = Math.round(parseFloat(stationsData[stationsData.selectedIndex].loadNorth) * 100);
     stationStats.loadSouth = Math.round(parseFloat(stationsData[stationsData.selectedIndex].loadSouth) * 100);
     menuBar.title = stationStats.selectedStation;
