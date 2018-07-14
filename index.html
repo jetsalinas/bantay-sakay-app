@@ -93,7 +93,7 @@
             <h2 class="mr4 mv0">To Baclaran</h2>
             <p class="ma0">HEAVY</p>
           </div>
-          <div class="flex items-center w-100 ml4 mv2">
+          <div class= "flex items-center w-100 ml4 mv2">
             <img src="assets/img/train-icon.svg" class="h2 mr2">
             <h2 class="mr4 mv0">To Roosevelt</h2>
             <p class="ma0">HEAVY</p>
@@ -115,6 +115,18 @@
         </div>
       </div>
 
+      <div id="app-attractions-general">
+        <div class="flex w-100 mh6 mv3 mv4">
+          <div class="w-100" v-for="attractions in attractionsData">
+            <div class="w-30 shadow-1">
+              <img v-bind:src="attractions.imageUrl" alt="" srcset="">
+              <h2>{{attractions.name}}</h2>
+              <p>{{attractions.stationName}}</p>
+              <p>{{attractions.description}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
   </section>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js "></script>
