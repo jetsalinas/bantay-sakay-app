@@ -17,7 +17,7 @@
   <section class="white bg-black-90 vh-100 pl4" id="menu">
     <h1 class="f2 mt4 mb2">To Baclaran</h1>
     <ul class="list pa0 pl3 ml2 mv0">
-      <li class="mv0 flex items-center train train-light-b" data-index="19">Roosevelt</li>
+      <li class="mv0 flex items-center train train-light" data-index="19">Roosevelt</li>
       <li class="mv0 flex items-center train train-light" data-index="18">Balintawak</li>
       <li class="mv0 flex items-center train train-light" data-index="17">Monumento</li>
       <li class="mv0 flex items-center train train-light" data-index="16">5th Avenue</li>
@@ -36,9 +36,9 @@
       <li class="mv0 flex items-center train train-light" data-index="3">Gil Puyat</li>
       <li class="mv0 flex items-center train train-light" data-index="2">Libertad</li>
       <li class="mv0 flex items-center train train-light" data-index="1">EDSA</li>
-      <li class="mv0 flex items-center train train-light-e" data-index="0">Baclaran</li>
+      <li class="mv0 flex items-center train train-light" data-index="0">Baclaran</li>
     </ul>
-  </section>   
+  </section>
 
   <section id="panel" class="flex flex-column items-stretch flex-wrap black bg-white w-100 bh-100">
 
@@ -54,23 +54,23 @@
         <div id="app-station-statistics">
           <h1>Station Overview</h1>
           <div v-if="selectedStation">
-              <h2 class="i">{{ selectedStation }} Station</h2>
-              <div class="fl w-50">
-                <h2>{{ loadNorth }} %</h2>
-                <p class="i">Northbound Passenger Volume</p>
-              </div>
-              <div class="fl w-50">
-                <h2>{{ loadSouth }} %</h2>
-                <p class="i">Southbound Passenger Volume</p>
-              </div>
-              <div class="fl w-50">
-                <h2>{{ firstTrainTime }}</h2>
-                <p class="i">ETA next train</p>
-              </div>
-              <div class="fl w-50">
-                <h2>{{ secondTrainTime }}</h2>
-                <p class="i">ETA following train</p>
-              </div>
+            <h2 class="i">{{ selectedStation }} Station</h2>
+            <div class="fl w-50">
+              <h2>{{ loadNorth }} %</h2>
+              <p class="i">Northbound Passenger Volume</p>
+            </div>
+            <div class="fl w-50">
+              <h2>{{ loadSouth }} %</h2>
+              <p class="i">Southbound Passenger Volume</p>
+            </div>
+            <div class="fl w-50">
+              <h2>{{ firstTrainTime }}</h2>
+              <p class="i">ETA next train</p>
+            </div>
+            <div class="fl w-50">
+              <h2>{{ secondTrainTime }}</h2>
+              <p class="i">ETA following train</p>
+            </div>
           </div>
           <div v-else>
             <p class="i">Please select a station.</p>
@@ -79,39 +79,43 @@
       </div>
 
       <div class="fl w-100" id="app-global-statistics">
-          <div v-if="!selectedStation" class="fl w-100 pv3 ph5 shadow-1 mv3 mh1">
-            <h1>System Overview</h1>
-            <div class="fl w-50">
-              <h2>{{ globalStatus }}</h2>
-              <p class="i">System Status</p>
-            </div>
-            <div class="fl w-50">
-              <h2>{{ globalTrains }} Trains</h2>
-              <p class="i">Trains Available</p>
-            </div>
-            <div class="fl w-50">
-              <h2>{{ globalHeadwayTime }} Minutes</h2>
-              <p class="i">Average Headway Time</p>
-            </div>
-            <div class="fl w-50">
-              <h2>{{ globalCycleTime }} Hours</h2>
-              <p class="i">Average Cycle Time</p>
-            </div>
-            
+        <div v-if="!selectedStation" class="fl w-100 pv3 ph5 shadow-1 mv3 mh1">
+          <h1>System Overview</h1>
+          <div class="fl w-50">
+            <h2>{{ globalStatus }}</h2>
+            <p class="i">System Status</p>
           </div>
-        </div>
+          <div class="fl w-50">
+            <h2>{{ globalTrains }} Trains</h2>
+            <p class="i">Trains Available</p>
+          </div>
+          <div class="fl w-50">
+            <h2>{{ globalHeadwayTime }} Minutes</h2>
+            <p class="i">Average Headway Time</p>
+          </div>
+          <div class="fl w-50">
+            <h2>{{ globalCycleTime }} Hours</h2>
+            <p class="i">Average Cycle Time</p>
+          </div>
 
-        <div class="fl w-100 pv3 ph5 shadow-1 mv3">
-          <h1>News</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, sapiente nam laudantium aliquid at temporibus iste possimus quaerat nisi impedit quasi, aliquam rem, iure quia expedita rerum! Quidem ab architecto beatae quos est molestiae dicta, dolores perferendis odit tempore. Molestias hic consequuntur cum vitae quo eius nisi nam omnis sint?</p>
         </div>
+      </div>
+
+      <div class="fl w-100 pv3 ph5 shadow-1 mv3">
+        <h1>News</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, sapiente nam laudantium aliquid at temporibus iste
+          possimus quaerat nisi impedit quasi, aliquam rem, iure quia expedita rerum! Quidem ab architecto beatae quos est
+          molestiae dicta, dolores perferendis odit tempore. Molestias hic consequuntur cum vitae quo eius nisi nam omnis
+          sint?
+        </p>
+      </div>
     </div>
 
-    
 
 
 
-    
+
+
   </section>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
