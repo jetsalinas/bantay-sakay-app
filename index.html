@@ -103,8 +103,8 @@
       <div id="station-right">
         <div class="flex items-center">
           <h2 class="mr4 mv0 w4-5">To Roosevelt</h2>
-          <img src="assets/img/load-heavy.svg" class="ml2 h2">
-          <p class="black-70 ma0 f6 fw9">HEAVY</p>
+          <img src="assets/img/load-moderate.svg" class="ml2 h2">
+          <p class="black-70 ma0 f6 fw9">MODERATE</p>
         </div>
         <div class="flex items-center justify-between bg-white mv3 ph3 pv3 ba b--black-50 br2">
           <div class="flex items-center flex-grow-1">
@@ -183,7 +183,7 @@
       <div class="mv4 ph6 w-100 flex flex-wrap items-center">
         <div class="w5 ba b--black-40 br2 mr4" v-for="trip in tripsData" v-on:click="selectTrip(trip.name)">
           <div class="aspect-ratio aspect-ratio--16x9 br2 br--top">
-            <div class="aspect-ratio--object cover" v-bind:style="{ backgroundColor: '#000000' }"></div>
+            <div class="aspect-ratio--object cover" v-bind:style="{ background: 'url(' + trip.imageUrl + ')' }"></div>
           </div>
           <div class="card-bottom ph3 mv2 h4 overflow-y-hidden">
             <h3 class="f3 mt2 mb0 truncate">{{ trip.name }}</h3>
