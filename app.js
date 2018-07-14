@@ -26,6 +26,17 @@ var featuredTrips = new Vue({
     el: "#app-featured-trips",
     data: {
         "tripsData": [],
+        "hasSelected": false,
+        "selectedTrip": []
+    }, methods: {
+        "selectTrip": function (tripName) {
+            for (trip in featuredTrips.tripsData) {
+                if (featuredTrips.tripsData[trip].name == tripName) {
+                    featuredTrips.selectedTrip = featuredTrips.tripsData[trip];
+                    featuredTrips.hasSelected = true;
+                }
+            }
+        }
     }
 });
 
@@ -35,14 +46,6 @@ var menuBar = new Vue({
         title: "Bantay Sakay",
         subtitle: "",
         displayBack: false
-    }
-});
-
-var attractionsGeneral = new Vue({
-    el: "#app-attractions-general",
-    data: {
-        attractionsData: [],
-        selectedStation: null
     }
 });
 
@@ -57,6 +60,7 @@ var updateData = function () {
     var stationsUrl = 'http://localhost:5000/api/stations';
     var statisticsUrl = 'http://localhost:5000/api/statistics';
     var attractionsUrl = 'http://localhost:5000/api/attractions';
+    var tripsUrl = 'http://localhost:5000/api/trips';
 
     var request = new Request(trainsUrl, { method: 'GET' });
     fetch(request).then(response => {
@@ -119,8 +123,9 @@ var updateData = function () {
     });
 }
 
+var trainNodes = document.querySelectorAll('.train');
+
 var selectStationView = function (e) {
-    var trainNodes = document.querySelectorAll('.train');
     for (var i = 0; i < trainNodes.length; i++) {
         trainNodes[i].classList.add('train-inactive')
         trainNodes[i].classList.remove('train-active');
@@ -164,17 +169,10 @@ for (var i = 0; i < trainNodes.length; i++) {
     trainNodes[i].addEventListener("click", selectStationView, false);
 }
 
-var displayTrip = new Vue({
-    el: "#app-selected-trip",
-    data: {
-        "selectedTrip": []
-    }
-});
-
-var selectTrip = function(e) {
+var selectTrip = function (e) {
     tripName = e.dataset.name;
     console.log(featuredTrips.tripsData);
-    for(trip in featuredTrips.tripsData) {
+    for (trip in featuredTrips.tripsData) {
         console.log(featuredTrips.tripsData[trip]);
     }
 }
