@@ -194,17 +194,8 @@ var selectStationView = function (e) {
     states.selectedStation = stationsData[stationsData.selectedIndex].name;
     stationStats.loadNorth = Math.round(parseFloat(stationsData[stationsData.selectedIndex].loadNorth) * 100);
     stationStats.loadSouth = Math.round(parseFloat(stationsData[stationsData.selectedIndex].loadSouth) * 100);
-    menuBar.title = stationStats.selectedStation;
+    menuBar.title = states.selectedStation;
     menuBar.displayBack = true;
-}
-
-var selectTripView = function (e) {
-    states.currentView = "trip";
-    tripName = e.dataset.name;
-    console.log(featuredTrips.tripsData);
-    for (trip in featuredTrips.tripsData) {
-        console.log(featuredTrips.tripsData[trip]);
-    }
 }
 
 var resetNodes = function () {

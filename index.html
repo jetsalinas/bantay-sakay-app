@@ -22,27 +22,14 @@
   <section id="panel" class="flex flex-column flex-wrapitems-stretch black bg-white w-100 shadow-1">
 
     <!-- Top bar -->
-    <div id="top" class="flex flex-nowrap justify-between pv4 ph5 black bg-black-05 w-100">
-      <!-- Left -->
-      <div id="topleft" class="flex items-center">
-        <div id="menu-bar" class="flex items-center mv2 mv1-ns">
-          <div class="mh3 pointer" id="closeBtn" v-if="!(states.currentView=='global')" onclick="closeView()">
-            <i class="material-icons md-36 f2">arrow_back</i>
-          </div>
-          <template v-if="title === null">
-            <img src="assets/img/logo.svg" class="h2-5">
-          </template>
-          <template v-else>
-            <h1 class="flex items-center ml3 mv0 f3 dark-green">{{ title }}</h1>
-          </template>
-        </div>
-      </div>
-      
-      <!-- Right -->
-      <div id="topright" class="flex items-center">
-        <i id="toggle-train-list" class="material-icons md-36 pointer">view_list</i>
-      </div>
-    </div>
+    <Navbar id="menu-bar" v-bind:show-pointer="!(states.currentView=='global')">
+      <template v-if="title === null">
+        <img src="assets/img/logo.svg" class="h2-5">
+      </template>
+      <template v-else>
+        <h1 class="flex items-center ml3 mv0 f3 dark-green">{{ title }}</h1>
+      </template>
+    </Navbar>
 
     <!-- Hero, Stats -->
     <div class="flex flex-wrap pt3 pb5 w-100 bg-black-05 bb b--black-10" id="app-global-statistics" v-if="states.currentView == 'global'">
@@ -170,7 +157,7 @@
           <div class="w5 ba b--black-40 br2 mr4" v-for="node in states.selectedTrip.nodes" v-on:click="selectAttraction(node.attraction.name)">
             <div class="aspect-ratio aspect-ratio--16x9 br2 br--top">
               <div class="aspect-ratio--object cover" v-bind:style="{ background: 'url(' + node.attraction.imageUrl + ')' }"></div>
-           </div>
+            </div>
             <div class="card-bottom ph3 mv2 h4 overflow-y-hidden">
               <h3 class="f3 mt2 mb0 truncate">{{ node.attraction.name }}</h3>
               <p class="mv1 f6 flex items-center">
@@ -196,7 +183,7 @@
         <p v-for="tags in states.selectedAttraction.tags">{{ tags }}</p>
       </div>
     </div>
-  </div>
+    </div>
 
     <!-- Stats/Featured Trips -->
     <div id="app-featured-trips" v-if="states.currentView == 'global' || states.currentView == 'trips' ">
@@ -265,14 +252,12 @@
     </ul>
   </sidebar>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-  <script src="nav.js"></script>
+  <script src="components.js"></script>
   <script src="app.js"></script>
 
-  <!-- VUE COMPONENTS -->
-  <script src="data.js"></script>
-  <script src="components.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+  <script src="nav.js"></script>
 
 </body>
 </html>
