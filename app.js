@@ -1,7 +1,3 @@
-
-
-//Vue definitions
-
 var stationStats = new Vue({
     el: "#app-station-statistics",
     data: {
@@ -50,18 +46,27 @@ var attractionsGeneral = new Vue({
     }
 });
 
+<<<<<<< HEAD
 var trainsUrl = 'http://localhost:5000/api/trains';
 var stationsUrl = 'http://localhost:5000/api/stations';
 var statisticsUrl = 'http://localhost:5000/api/statistics';
 var attractionsUrl = 'http://localhost:5000/api/attractions';
 var tripsUrl = 'http://localhost:5000/api/trips';
 
+=======
+>>>>>>> 20e656e1092a8bea3f9569daf37ad82ff753bb7d
 var trainsData = [];
 var stationsData = [];
 var statisticsData = {};
 var attractionsData = {};
 
 var updateData = function () {
+
+    var trainsUrl = 'http://localhost:5000/api/trains';
+    var stationsUrl = 'http://localhost:5000/api/stations';
+    var statisticsUrl = 'http://localhost:5000/api/statistics';
+    var attractionsUrl = 'http://localhost:5000/api/attractions';
+
     var request = new Request(trainsUrl, { method: 'GET' });
     fetch(request).then(response => {
         if (response.status === 200) {
@@ -123,10 +128,8 @@ var updateData = function () {
     });
 }
 
-// Navbar Station Selection Scripts
-var trainNodes = document.querySelectorAll('.train');
-
 var selectStationView = function (e) {
+    var trainNodes = document.querySelectorAll('.train');
     for (var i = 0; i < trainNodes.length; i++) {
         trainNodes[i].classList.add('train-inactive')
         trainNodes[i].classList.remove('train-active');
@@ -144,6 +147,7 @@ var selectStationView = function (e) {
 }
 
 var resetNodes = function () {
+    var trainNodes = document.querySelectorAll('.train');
     for (var i = 0; i < trainNodes.length; i++) {
         trainNodes[i].classList.remove('train-inactive');
         trainNodes[i].classList.remove('train-active');
@@ -159,6 +163,10 @@ var closeStationView = function () {
     attractionsGeneral.selectedStation = null;
     resetNodes();
 };
+
+/********
+ * MAIN *
+ ********/
 
 for (var i = 0; i < trainNodes.length; i++) {
     trainNodes[i].addEventListener("click", selectStationView, false);
