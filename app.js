@@ -99,6 +99,18 @@ var hideNodes = function(e) {
     stationStats.loadSouth = Math.round(parseFloat(stationsData[stationsData.selectedIndex].loadSouth)*100);
 }
 
+var resetNodes = function() {
+    for (var i = 0; i < trainNodes.length; i++) {
+        trainNodes[i].classList.remove('train-inactive');
+    }
+}
+
+var closeStationView = function(){
+    stationStats.selectedStation = null;
+    stationStats.selectedIndex = null;
+    globalStats.selectedStation = null;
+};
+
 for (var i = 0; i < trainNodes.length; i++) {
     trainNodes[i].addEventListener("click", hideNodes, false);
 }
