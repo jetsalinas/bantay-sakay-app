@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
-<body class="flex content-stretch items-stretch cabin">
+<body class="flex flex-wrap content-stretch items-stretch cabin">
 
   <section class="white bg-black-90 h-100 pl4" id="menu">
 
@@ -48,64 +48,89 @@
     </ul>
   </section>
 
-  <section id="panel" class="flex flex-column items-stretch flex-wrap black bg-white w-100 bh-100">
+  <section id="panel" class="flex flex-column items-stretch flex-wrap black bg-white bh-100">
 
     <!-- Menu toggle -->
-    <div class="mv3 flex items-center">
-      <img src="assets/img/menu-close.svg" class="h-menu pv2 ph0 toggle-button">
-      <div id="menu-bar" class="flex items-center mv2">
-        <div class="fl ml3 mr1 v-mid pointer" id="closeStationBtn" v-if="displayBack" onclick="closeStationView()">
-          <i class="material-icons f2">arrow_back</i>
+    <div id="top" class="white bg-dark-green">
+      <div class="mv3 flex items-center">
+        <img src="assets/img/menu-close.svg" class="h-menu pv2 ph0 toggle-button">
+        <div id="menu-bar" class="flex items-center mv2">
+          <div class="fl ml3 mr1 v-mid pointer" id="closeStationBtn" v-if="displayBack" onclick="closeStationView()">
+            <i class="material-icons f2">arrow_back</i>
+          </div>
+          <h1 class="ml3 mv0">{{ title }}</h1>
         </div>
-        <h1 class="ml3 mv0">{{ title }}</h1>
       </div>
+
+      <div class="flex flex-wrap flex-nowrap-ns mv4" id="app-global-statistics" v-if="!selectedStation">
+        <div class="dn db-ns mh6 flex items-center">
+          <img src="assets/img/death-01.svg " class="h5">
+        </div>
+        <div class="w-auto-ns flex-auto-ns">
+          <div class="mb3">
+            <h2 class="f1 mv1">{{ globalStatus }}</h2>
+          </div>
+          <div class="flex items-center ml4 mv2 ">
+            <img src="assets/img/train-icon.svg " class="h2 mr2 ">
+            <h2 class="mr4 mv0 w4-5">To Baclaran</h2>
+            <img src="assets/img/load-light.svg " class="ml2 h2 ">
+            <p class="white-70 ma0 f6 fw9">LIGHT</p>
+          </div>
+          <div class="flex items-center ml4 mv2 ">
+            <img src="assets/img/train-icon.svg " class="h2 mr2 ">
+            <h2 class="mr4 mv0 w4-5">To Roosevelt</h2>
+            <img src="assets/img/load-light.svg " class="ml2 h2 ">
+            <p class="white-70 ma0 f6 fw9">LIGHT</p>
+          </div>
+          <div class="flex ml4 mt4">
+            <div class="mr5">
+              <h2 class="mv0">{{ globalTrains }}</h2>
+              <p class="mv1 white-70 f6">trains running</p>
+            </div>
+            <div class="mr5 ">
+              <h2 class="mv0 ">{{ globalHeadwayTime }} min</h2>
+              <p class="mv1 white-70 f6">Headway</p>
+            </div>
+            <div class="mr5 ">
+              <h2 class="mv0 ">{{ globalCycleTime }} hrs</h2>
+              <p class="mv1 white-70 f6">Cycle time</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap ph5" v-if="selectedStation" id="app-station-statistics">
+      </div>
+
     </div>
 
-    <div class="flex flex-wrap ph5" v-if="selectedStation" id="app-station-statistics">
-    </div>
-
-    <div class="flex flex-wrap flex-nowrap-ns w-100 mv4" id="app-global-statistics" v-if="!selectedStation">
-      <div class="dn db-ns mh6 flex items-center">
-        <img src="assets/img/death-01.svg " class="h5">
-      </div>
-      <div class="w-100 w-auto-ns flex-auto-ns">
-        <div class="w-100 mb3">
-          <h2 class="f2 mv1 ">{{ globalStatus }}</h2>
-        </div>
-        <div class="flex items-center w-100 ml4 mv2 ">
-          <img src="assets/img/train-icon.svg " class="h2 mr2 ">
-          <h2 class="mr4 mv0 w4-5">To Baclaran</h2>
-          <img src="assets/img/load-light.svg " class="ml2 h2 ">
-          <p class="black-70 ma0 f6 fw9">LIGHT</p>
-        </div>
-        <div class="flex items-center w-100 ml4 mv2 ">
-          <img src="assets/img/train-icon.svg " class="h2 mr2 ">
-          <h2 class="mr4 mv0 w4-5">To Roosevelt</h2>
-          <img src="assets/img/load-light.svg " class="ml2 h2 ">
-          <p class="black-70 ma0 f6 fw9">LIGHT</p>
-        </div>
-        <div class="flex w-100 ml4 mt4 ">
-          <div class="mr5">
-            <h2 class="mv0">{{ globalTrains }}</h2>
-            <p class="mv1 black-70 f6">trains running</p>
-          </div>
-          <div class="mr5 ">
-            <h2 class="mv0 ">{{ globalHeadwayTime }} min</h2>
-            <p class="mv1 black-70 f6">Headway</p>
-          </div>
-          <div class="mr5 ">
-            <h2 class="mv0 ">{{ globalCycleTime }} hrs</h2>
-            <p class="mv1 black-70 f6">Cycle time</p>
-          </div>
-        </div>
-      </div>
+    <div class="ml4 mv4">
+      <img class="fl h3 ma0" src="assets/img/train-horizontal-light-b.svg">
+      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
+      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
+      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
+      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
+      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
+      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
+      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
+      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
+      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
+      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
+      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
+      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
+      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
+      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
+      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
+      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
+      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
+      <img class="fl h3 ma0" src="assets/img/train-horizontal-light-e.svg">
     </div>
 
     <div id="app-attractions-general" v-if="!selectedStation">
-      <div class="flex w-100 mh6 mv3 mv4">
-        <div class="w-100" v-for="attractions in attractionsData">
+      <div class="flex mh6 mv3 mv4">
+        <div v-for="attractions in attractionsData">
           <div class="w-30 shadow-1">
-            <img v-bind:src="attractions.imageUrl" alt="" srcset="">
+            <img v-bind:src="attractions.imageUrl">
             <h2>{{attractions.name}}</h2>
             <p>{{attractions.stationName}}</p>
             <p>{{attractions.description}}</p>
