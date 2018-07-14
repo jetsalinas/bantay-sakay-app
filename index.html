@@ -131,11 +131,9 @@
     </div>
 
     <!-- Hero, Attraction -->
-    <div class="flex flex-wrap pt3 pb5 ph5 w-100 bg-black-05 bb b--black-10" id="app-attraction-stats" v-if="states.currentView == 'attractions'">
-      <div class="dn db-ns mh6 flex items-center">
-        <img src="assets/img/death-01.svg" class="h5">
-      </div>
-      <div class="station-left mw8">
+    <div class="flex pt3 pb5 ph5 w-100 bg-black-05 bb b--black-10" id="app-attraction-stats" v-if="states.currentView == 'attractions'">
+      <div class="w-100 mr5"><img class="w-100 br4" v-bind:src="states.selectedAttraction.imageUrl" alt="" srcset=""></div>
+      <div class=" mw8">
         <h1>{{ states.selectedAttraction.name }}</h1>
         <p>{{ states.selectedAttraction.stationName }}</p>
         <p>{{ states.selectedAttraction.address }}</p>
