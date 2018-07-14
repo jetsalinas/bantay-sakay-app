@@ -104,33 +104,11 @@
 
     </div>
 
-    <div class="ml4 mv4">
-      <img class="fl h3 ma0" src="assets/img/train-horizontal-light-b.svg">
-      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
-      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
-      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
-      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
-      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
-      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
-      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
-      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
-      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
-      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
-      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
-      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
-      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
-      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
-      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
-      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
-      <img class="fl h3 ma0" src="assets/img/train-horizontal-light.svg">
-      <img class="fl h3 ma0" src="assets/img/train-horizontal-light-e.svg">
-    </div>
-
     <div id="app-attractions-general">
       <div class="flex mh6 mv3 mv4">
         <div v-for="attractions in attractionsData">
-          <div class="h-20 ma3 shadow-1"  v-if="selectedStation">
-            <img class="h-10" v-bind:src="attractions.imageUrl">
+          <div class="h-20 ma3 shadow-1"  v-if="!selectedStation">
+            <img class="h-20" v-bind:src="attractions.imageUrl">
             <div class="pa3">
               <h2>{{attractions.name}}</h2>
               <p>{{attractions.stationName}}</p>
