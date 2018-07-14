@@ -70,8 +70,8 @@
         </div>
       </div>
 
-      <div class="fl w-100 pv3 ph5 shadow-1 mv3 mh1">
-          <div id="app-global-statistics">
+      <div class="fl w-100" id="app-global-statistics">
+          <div v-if="!selectedStation" class="fl w-100 pv3 ph5 shadow-1 mv3 mh1">
             <h1>System Overview</h1>
             <div class="fl w-50">
               <h2>{{ globalStatus }}</h2>
