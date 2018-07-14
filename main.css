@@ -9,7 +9,7 @@ body {
   position: fixed;
   top: 0;
   bottom: 0;
-  width: 300px;
+  width: 600px;
   overflow-y: auto;
   min-height: 100vh;
   -webkit-overflow-scrolling: touch;
@@ -140,4 +140,8 @@ body {
 .h-menu {
     height: 2.5rem;
     position: relative;
+}
+
+.w4-5 {
+    width: 12rem;
 }

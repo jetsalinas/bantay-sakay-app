@@ -36,6 +36,15 @@ var globalStats = new Vue({
     }
 })
 
+var menuBar = new Vue({
+    el: "#menu-bar",
+    data: {
+        title: "Bantay Sakay",
+        subtitle: "",
+        displayBack: false
+    }
+})
+
 var trainsUrl = 'http://localhost:5000/api/trains';
 var stationsUrl = 'http://localhost:5000/api/stations';
 var statisticsUrl = 'http://localhost:5000/api/statistics';
@@ -85,7 +94,7 @@ var updateData = function () {
 // Navbar Station Selection Scripts
 var trainNodes = document.querySelectorAll('.train');
 
-var hideNodes = function (e) {
+var selectStationView = function (e) {
     for (var i = 0; i < trainNodes.length; i++) {
         trainNodes[i].classList.add('train-inactive')
         trainNodes[i].classList.remove('train-active');
@@ -97,6 +106,8 @@ var hideNodes = function (e) {
     globalStats.selectedStation = stationsData[stationsData.selectedIndex].name;
     stationStats.loadNorth = Math.round(parseFloat(stationsData[stationsData.selectedIndex].loadNorth) * 100);
     stationStats.loadSouth = Math.round(parseFloat(stationsData[stationsData.selectedIndex].loadSouth) * 100);
+    menuBar.title = stationStats.selectedStation;
+    menuBar.displayBack = true;
 }
 
 var resetNodes = function () {
@@ -110,11 +121,13 @@ var closeStationView = function () {
     stationStats.selectedStation = null;
     stationStats.selectedIndex = null;
     globalStats.selectedStation = null;
+    menuBar.title = "";
+    menuBar.displayBack = false;
     resetNodes();
 };
 
 for (var i = 0; i < trainNodes.length; i++) {
-    trainNodes[i].addEventListener("click", hideNodes, false);
+    trainNodes[i].addEventListener("click", selectStationView, false);
 }
 
 updateData();
