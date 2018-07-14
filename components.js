@@ -22,3 +22,18 @@ Vue.component('Navbar', {
     `,
   props: ['showPointer']
 })
+
+Vue.component('TrainStatus', {
+  template: `<div class="flex items-center justify-between mv3 ph3"
+  v-bind:class="{pv3: focus, bg-white: focus, ba: focus, b--black-50: focus, br2: focus}">
+  <div class="flex items-center flex-grow-1">
+    <img src="assets/img/train-icon.svg" class="h2 mr2">
+      <i class="material-icons mr2">arrow_upward</i>
+      <h3 class="f4 ma0 black--80">Baclaran</h3>
+          </div>
+    <h3 class="f3 ma0 black--80">7m</h3>
+  </div>
+</div>
+  `,
+  props: ['focus']
+})
