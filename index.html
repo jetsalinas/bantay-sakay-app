@@ -80,6 +80,13 @@
     <div class="flex flex-wrap ph5" v-if="selectedStation" id="app-station-statistics">
     </div>
 
+
+    <div id="app-featured-trips" class="mh6 mv4">
+      <div v-for="trip in tripsData" class="pa4 shadow-1 w-30">
+        <p>{{ trip.name}}</p>
+        <p>{{ trip.description }}</p>
+      </div>
+    </div>
   </section>
 
   <sidebar class="white bg-black-90 h-100" id="menu">
@@ -90,7 +97,7 @@
       <p class="dib f6 ttu mv2 white-80">&bull;</p>
       <p class="dib f6 ttu mv2 white-80">To Roosevelt</p>
     </div>
-
+    
     <ul class="db h-100 list pa0 pl3 ml4 mv0">
       <li class="mv0 flex items-center train train-light" data-index="19">Roosevelt</li>
       <li class="mv0 flex items-center train train-light" data-index="18">Balintawak</li>

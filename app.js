@@ -25,7 +25,7 @@ var globalStats = new Vue({
 var featuredTrips = new Vue({
     el: "#app-featured-trips",
     data: {
-        "tripsData": [],
+        "tripsData": []
     }
 });
 
@@ -57,6 +57,7 @@ var updateData = function () {
     var stationsUrl = 'http://localhost:5000/api/stations';
     var statisticsUrl = 'http://localhost:5000/api/statistics';
     var attractionsUrl = 'http://localhost:5000/api/attractions';
+    var tripsUrl = 'http://localhost:5000/api/trips';
 
     var request = new Request(trainsUrl, { method: 'GET' });
     fetch(request).then(response => {
@@ -119,8 +120,9 @@ var updateData = function () {
     });
 }
 
+var trainNodes = document.querySelectorAll('.train');
+
 var selectStationView = function (e) {
-    var trainNodes = document.querySelectorAll('.train');
     for (var i = 0; i < trainNodes.length; i++) {
         trainNodes[i].classList.add('train-inactive')
         trainNodes[i].classList.remove('train-active');
@@ -135,6 +137,8 @@ var selectStationView = function (e) {
     stationStats.loadSouth = Math.round(parseFloat(stationsData[stationsData.selectedIndex].loadSouth) * 100);
     menuBar.title = stationStats.selectedStation;
     menuBar.displayBack = true;
+
+
 }
 
 var resetNodes = function () {
