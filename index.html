@@ -150,15 +150,7 @@
     <div id="app-featured-trips" v-if="states.currentView == 'global' || states.currentView == 'trips' ">
       <h2 class="ttu mh6 mv4 f5">Featured Trips</h2>
       <div class="mv4 ph6 w-100 flex flex-wrap items-center">
-        <div class="w5 ba b--black-40 br2 mr4" v-for="trip in tripsData" v-on:click="selectTrip(trip.name)">
-          <div class="aspect-ratio aspect-ratio--16x9 br2 br--top">
-            <div class="aspect-ratio--object cover" v-bind:style="{ background: 'url(' + trip.imageUrl + ')' }"></div>
-          </div>
-          <div class="card-bottom ph3 mv2 h4 overflow-y-hidden">
-            <h3 class="f3 mt2 mb0 truncate">{{ trip.name }}</h3>
-            <p class="mv1 lh-copy f6">{{ trip.description }}</p>
-          </div>
-        </div>
+        <card-trip v-for="trip in tripsData" v-bind:key="trip.name" v-bind:image="trip.imageUrl" v-bind:name="trip.name" v-bind:description="trip.description"></card-trip>
       </div>
     </div>
 
@@ -166,17 +158,8 @@
     <div id="app-featured-attractions" v-if="states.currentView == 'global'">
       <h2 class="ttu mh6 mv4 f5">Attractions</h2>
       <div class="mv4 ph6 w-100 flex flex-wrap items-center">
-        <div class="w5 ba b--black-40 br2 mr4" v-for="attraction in attractionsData" v-on:click="selectAttraction(attraction.name)">
-          <div class="aspect-ratio aspect-ratio--16x9 br2 br--top">
-            <div class="aspect-ratio--object cover" v-bind:style="{ background: 'url(' + attraction.imageUrl + ')' }"></div>
-          </div>
-          <div class="card-bottom ph3 mv2 h4 overflow-y-hidden">
-            <h3 class="f3 mt2 mb0 truncate">{{ attraction.name }}</h3>
-            <p class="mv1 f6 flex items-center">
-              <i class="material-icons md-18 mr1">train</i>{{ attraction.stationName }}</p>
-            <p class="lh-copy f7 mt2">{{ attraction.description }}</p>
-          </div>
-        </div>
+        <card-attraction v-for="attraction in attractionsData" v-bind:key="attraction.name" v-bind:image="attraction.imageUrl" v-bind:name="attraction.name"
+          v-bind:station-name="attraction.stationName" v-bind:description="attraction.description"></card-attraction>
       </div>
     </div>
 

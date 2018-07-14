@@ -42,3 +42,33 @@ Vue.component('train-status', {
   `,
   props: ['focus', 'time', 'direction']
 });
+
+Vue.component('card', {
+  template: `<div class="w5 ba b--black-40 br2 mr4 v-bind:class="{pointer: clickable}" ">
+  <div class="aspect-ratio aspect-ratio--16x9 br2 br--top">
+    <div class="aspect-ratio--object cover" v-bind:style="{ background: 'url(' + image + ')' }"></div>
+  </div>
+  <div class="card-bottom ph3 mv2 h4 overflow-y-hidden">
+    <slot></slot>
+  </div>
+</div>`,
+  props: ['image', 'clickable']
+});
+
+Vue.component('card-trip', {
+  template: `<card v-bind:image="image" clickable="true">
+  <h3 class="f3 mt2 mb0 truncate">{{ name }}</h3>
+  <p class="mv1 lh-copy f6">{{ description }}</p>
+</card>`,
+  props: ['image', 'name', 'description']
+})
+
+Vue.component('card-attraction', {
+  template: `<card v-bind:image="image" clickable="true">
+  <h3 class="f3 mt2 mb0 truncate">{{ name }}</h3>
+  <p class="mv1 f6 flex items-center">
+    <i class="material-icons md-18 mr1">train</i>{{ stationName }}</p>
+  <p class="lh-copy f7 mt2">{{ description }}</p>
+</card>`,
+  props: ['image', 'name', 'stationName', 'description']
+})
