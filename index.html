@@ -115,10 +115,10 @@
         </div>
       </div>
 
-      <div id="app-attractions-general" v-if="!selectedStation">
+      <div id="app-attractions-general">
         <div class="flex w-100 mh6 mv3 mv4">
           <div class="w-100" v-for="attractions in attractionsData">
-            <div class="w-30 shadow-1">
+            <div class="w-30 shadow-1" v-if="!selectedStation === attractions.stationName">
               <img v-bind:src="attractions.imageUrl" alt="" srcset="">
               <h2>{{attractions.name}}</h2>
               <p>{{attractions.stationName}}</p>
