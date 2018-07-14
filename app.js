@@ -28,7 +28,7 @@ var stationStats = new Vue({
 var globalStats = new Vue({
     el: "#app-global-statistics",
     data: {
-        globalStatus: "Good",
+        globalStatus: "All systems go!",
         globalTrains: 27,
         globalHeadwayTime: 3.5,
         globalCycleTime: 1.5,
@@ -44,10 +44,10 @@ var trainsData = [];
 var stationsData = [];
 var statisticsData = {};
 
-var updateData = function() {
-    var request = new Request(trainsUrl , { method: 'GET'});
+var updateData = function () {
+    var request = new Request(trainsUrl, { method: 'GET' });
     fetch(request).then(response => {
-        if(response.status === 200) {
+        if (response.status === 200) {
             return response.json();
         } else {
             console.log("API server could not be reached");
@@ -57,9 +57,9 @@ var updateData = function() {
     }).catch(error => {
     });
 
-    request = new Request(stationsUrl , { method: 'GET'});
+    request = new Request(stationsUrl, { method: 'GET' });
     fetch(request).then(response => {
-        if(response.status === 200) {
+        if (response.status === 200) {
             return response.json();
         } else {
             console.log("API server could not be reached");
@@ -69,9 +69,9 @@ var updateData = function() {
     }).catch(error => {
     });
 
-    request = new Request(statisticsUrl , { method: 'GET'});
+    request = new Request(statisticsUrl, { method: 'GET' });
     fetch(request).then(response => {
-        if(response.status === 200) {
+        if (response.status === 200) {
             return response.json();
         } else {
             console.log("API server could not be reached");
@@ -85,7 +85,7 @@ var updateData = function() {
 // Navbar Station Selection Scripts
 var trainNodes = document.querySelectorAll('.train');
 
-var hideNodes = function(e) {
+var hideNodes = function (e) {
     for (var i = 0; i < trainNodes.length; i++) {
         trainNodes[i].classList.add('train-inactive')
         trainNodes[i].classList.remove('train-active');
@@ -95,18 +95,18 @@ var hideNodes = function(e) {
     stationsData.selectedIndex = parseInt(e.target.dataset.index);
     stationStats.selectedStation = stationsData[stationsData.selectedIndex].name;
     globalStats.selectedStation = stationsData[stationsData.selectedIndex].name;
-    stationStats.loadNorth = Math.round(parseFloat(stationsData[stationsData.selectedIndex].loadNorth)*100);
-    stationStats.loadSouth = Math.round(parseFloat(stationsData[stationsData.selectedIndex].loadSouth)*100);
+    stationStats.loadNorth = Math.round(parseFloat(stationsData[stationsData.selectedIndex].loadNorth) * 100);
+    stationStats.loadSouth = Math.round(parseFloat(stationsData[stationsData.selectedIndex].loadSouth) * 100);
 }
 
-var resetNodes = function() {
+var resetNodes = function () {
     for (var i = 0; i < trainNodes.length; i++) {
         trainNodes[i].classList.remove('train-inactive');
         trainNodes[i].classList.remove('train-active');
     }
 }
 
-var closeStationView = function(){
+var closeStationView = function () {
     stationStats.selectedStation = null;
     stationStats.selectedIndex = null;
     globalStats.selectedStation = null;
@@ -118,4 +118,4 @@ for (var i = 0; i < trainNodes.length; i++) {
 }
 
 updateData();
-setInterval(updateData, 1000*60*10);
+setInterval(updateData, 1000 * 60 * 10);
