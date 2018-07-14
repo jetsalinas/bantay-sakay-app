@@ -18,10 +18,12 @@
 </head>
 <body class="flex flex-wrap content-stretch items-stretch cabin">
 
+  <!-- Panel -->
   <section id="panel" class="flex flex-column flex-wrapitems-stretch black bg-white vw-100 shadow-1">
 
-    <!-- Menu toggle -->
+    <!-- Top bar -->
     <div id="top" class="flex flex-nowrap justify-between ph4 white bg-purple vw-100 shadow-1">
+      <!-- Left -->
       <div id="topleft" class="mv3 flex items-center">
         <div id="menu-bar" class="flex items-center mv2">
           <div class="fl ml3 mr1 v-mid pointer" id="closeStationBtn" v-if="displayBack" onclick="closeStationView()">
@@ -30,11 +32,13 @@
           <h1 class="ml3 mv0">{{ title }}</h1>
         </div>
       </div>
+      <!-- Right -->
       <div id="topright" class="mv3 flex items-center">
         <i id="toggle-train-list" class="material-icons md-36 pointer">train</i>
       </div>
     </div>
 
+    <!-- Hero, Stats -->
     <div class="flex flex-wrap flex-nowrap-ns pv5 vw-100 bg-black-05" id="app-global-statistics" v-if="!selectedStation">
       <div class="dn db-ns mh6 flex items-center">
         <img src="assets/img/death-01.svg " class="h5">
@@ -72,9 +76,8 @@
       </div>
     </div>
 
+    <!-- Hero, Station -->
     <div class="flex flex-wrap ph5" v-if="selectedStation" id="app-station-statistics">
-    </div>
-
     </div>
 
   </section>
