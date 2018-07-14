@@ -43,7 +43,9 @@ var featuredTrips = new Vue({
 var featuredAttractions = new Vue({
     el: "#app-featured-attractions",
     data: {
-
+        "attractionsData": [],
+        "hasSelected": false,
+        "selectedAttraction": []
     }
 })
 
@@ -59,7 +61,6 @@ var menuBar = new Vue({
 var trainsData = [];
 var stationsData = [];
 var statisticsData = {};
-var attractionsData = {};
 
 var updateData = function () {
 
@@ -113,7 +114,7 @@ var updateData = function () {
             console.log("API server could not be reached");
         }
     }).then(data => {
-        attractionsGeneral.attractionsData = data;
+        featuredAttractions.attractionsData = data;
     }).catch(error => {
     });
 

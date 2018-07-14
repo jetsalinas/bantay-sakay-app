@@ -151,20 +151,8 @@
       </div>
     </div>
 
-    <!-- Station/Attractions -->
-    <div class="mv4 ph6 w-100">
-      <h2 class="ttu f5">Attractions</h2>
-      <div class="mw5 ba b--black-40 br2">
-        <img src="http://placekitten.com/g/600/500" class="db w-auto br2 br--top" alt="Photo of a kitten looking menacing.">
-        <div class="card-bottom ph3">
-          <h3 class="f3">Rizal Park</h3>
-          <p>I booped the twinko!!! I booped the twinko!!! I booped the twinko!!! I booped the twinko!!! I booped the twinko!!!</p>
-        </div>
-      </div>
-    </div>
-
     <div id="app-featured-trips">
-      <h1 class="mh6 mv4">Featured Trips</h1>
+      <h2 class="ttu mh6 mv4 f5">Featured Trips</h2>
       <div class="pa4 mh6 shadow-1" v-if="hasSelected">
         <h1>{{ selectedTrip.name }}</h1>
         <h2>{{ selectedTrip.description }}</h2>
@@ -181,9 +169,20 @@
       </div>
     </div>
 
-    <div id="app-featured-attractions">
-      
+    <!-- Station/Attractions -->
+    <div id="app-featured-attractions">   
+      <h2 class="ttu mh6 mv4 f5">Attractions</h2> 
+      <div class="mv4 ph6 w-100 flex flex-wrap" v-for="attraction in attractionsData">
+        <div class="mw5 ba b--black-40 br2">
+          <img v-bind:src="attraction.imageUrl" class="db w-auto br2 br--top" alt="Photo of a kitten looking menacing.">
+          <div class="card-bottom ph3">
+            <h3 class="f3">{{ attraction.name }}</h3>
+            <p>{{ attraction.description }}</p>
+          </div>
+        </div>
+      </div>
     </div>
+
 
   </section>
 
