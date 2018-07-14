@@ -39,7 +39,7 @@ var tripStats = new Vue({
     data: {
         states: states
     }, methods: {
-        "selectAttraction": function(attractionName) {
+        "selectAttraction": function (attractionName) {
             for (attraction in featuredAttractions.attractionsData) {
                 if (featuredAttractions.attractionsData[attraction].name == attractionName) {
                     featuredAttractions.states.selectedAttraction = featuredAttractions.attractionsData[attraction];
@@ -87,7 +87,7 @@ var featuredAttractions = new Vue({
         "hasSelected": false,
         "selectedAttraction": []
     }, methods: {
-        "selectAttraction": function(attractionName) {
+        "selectAttraction": function (attractionName) {
             for (attraction in featuredAttractions.attractionsData) {
                 if (featuredAttractions.attractionsData[attraction].name == attractionName) {
                     featuredAttractions.states.selectedAttraction = featuredAttractions.attractionsData[attraction];
@@ -104,7 +104,7 @@ var menuBar = new Vue({
     el: "#menu-bar",
     data: {
         states: states,
-        title: "Bantay Sakay",
+        title: null,
         subtitle: "",
         displayBack: false
     }
@@ -222,17 +222,8 @@ var selectStationView = function (e) {
     states.selectedStation = stationsData[stationsData.selectedIndex].name;
     stationStats.loadNorth = Math.round(parseFloat(stationsData[stationsData.selectedIndex].loadNorth) * 100);
     stationStats.loadSouth = Math.round(parseFloat(stationsData[stationsData.selectedIndex].loadSouth) * 100);
-    menuBar.title = stationStats.selectedStation;
+    menuBar.title = states.selectedStation;
     menuBar.displayBack = true;
-}
-
-var selectTripView = function (e) {
-    states.currentView = "trip";
-    tripName = e.dataset.name;
-    console.log(featuredTrips.tripsData);
-    for (trip in featuredTrips.tripsData) {
-        console.log(featuredTrips.tripsData[trip]);
-    }
 }
 
 var resetNodes = function () {
@@ -248,8 +239,8 @@ var closeView = function () {
     states.selectedStation = null;
     states.selectedTrip = null;
     states.selectedAttraction = null;
-    menuBar.title = "Bantay Sakay";
-    menuBar.displayBack = true;
+    menuBar.title = null;
+    menuBar.displayBack = false;
     resetNodes();
 };
 
