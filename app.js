@@ -169,9 +169,7 @@ var resetNodes = function () {
 }
 
 var closeStationView = function () {
-    stationStats.selectedStation = null;
-    stationStats.selectedIndex = null;
-    globalStats.selectedStation = null;
+    states.selectedStation = null;
     menuBar.title = "Bantay Sakay";
     menuBar.displayBack = false;
     attractionsGeneral.selectedStation = null;
