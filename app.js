@@ -142,6 +142,7 @@ var closeStationView = function () {
  * MAIN *
  ********/
 
+var trainNodes = document.querySelectorAll('.train');
 for (var i = 0; i < trainNodes.length; i++) {
     trainNodes[i].addEventListener("click", selectStationView, false);
 }
