@@ -32,17 +32,23 @@ var globalStats = new Vue({
 })
 
 var tripStats = new Vue({
-
+    el: "#app-trip-statistics",
+    data: {
+        states: states
+    }
 });
 
 var attractionStats = new Vue({
-
+    el: "#app-attraction-stats",
+    data: {
+        states: states
+    }
 });
 
 var featuredTrips = new Vue({
     el: "#app-featured-trips",
     data: {
-        states: states,
+        "states": states,
         "tripsData": [],
         "hasSelected": false,
         "selectedTrip": []
@@ -50,8 +56,9 @@ var featuredTrips = new Vue({
         "selectTrip": function (tripName) {
             for (trip in featuredTrips.tripsData) {
                 if (featuredTrips.tripsData[trip].name == tripName) {
-                    featuredTrips.states.selectedTrip = featuredTrips.tripsData[trip];
-                    featuredTrips.hasSelected = !(featuredTrips.hasSelected);
+                    states.selectedTrip = featuredTrips.tripsData[trip];
+                    featuredTrips.hasSelected = true;
+                    states.currentView = "trips";
                 }
             }
         }
@@ -61,10 +68,21 @@ var featuredTrips = new Vue({
 var featuredAttractions = new Vue({
     el: "#app-featured-attractions",
     data: {
-        states: states,
+        "states": states,
         "attractionsData": [],
         "hasSelected": false,
         "selectedAttraction": []
+    }, methods: {
+        "selectAttraction": function(attractionName) {
+            for (attraction in featuredAttractions.attractionsData) {
+                if (featuredAttractions.attractionsData[attraction].name == attractionName) {
+                    featuredAttractions.states.selectedAttraction = featuredAttractions.attractionsData[attraction];
+                    featuredAttractions.hasSelected = true;
+                    states.currentView = "attractions";
+                    console.log(states.selectedAttraction);
+                }
+            }
+        }
     }
 })
 
@@ -192,7 +210,7 @@ var closeView = function () {
     states.selectedTrip = null;
     states.selectedAttraction = null;
     menuBar.title = "Bantay Sakay";
-    menuBar.displayBack = false;
+    menuBar.displayBack = true;
     resetNodes();
 };
 
