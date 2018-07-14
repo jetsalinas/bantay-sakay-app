@@ -153,7 +153,7 @@
 
     <div id="app-featured-trips">
       <h2 class="ttu mh6 mv4 f5">Featured Trips</h2>
-      <div class="pa4 mh6 shadow-1" v-if="hasSelected">
+      <div class="mv4 ph6 w-100 flex flex-wrap"  v-if="hasSelected">
         <h1>{{ selectedTrip.name }}</h1>
         <h2>{{ selectedTrip.description }}</h2>
         <div v-for="node in selectedTrip.nodes">
@@ -161,10 +161,14 @@
           <p class="i">{{ node.attraction.stationName }}</p>
         </div>
       </div>
-      <div class="flex mh6 mv4">
-        <div v-for="trip in tripsData" class="pa4 mh2 shadow-1 w-25" v-on:click="selectTrip( trip.name )">
-          <h2>{{ trip.name }}</h2>
-          <p>{{ trip.description }}</p>
+      <div class="">
+        <div class="mv4 ph6 w-100 flex flex-wrap">
+          <div v-for="trip in tripsData" class="mw5 ba b--black-40 br2" v-on:click="selectTrip( trip.name )">
+              <div>
+                  <h2>{{ trip.name }}</h2>
+                  <p>{{ trip.description }}</p>
+              </div>
+            </div>
         </div>
       </div>
     </div>
