@@ -29,8 +29,12 @@
           <div class="mh3 pointer" id="closeBtn" v-if="displayBack" onclick="closeView()">
             <i class="material-icons md-36 f2">arrow_back</i>
           </div>
-          <h1 class="flex items-center ml3 mv0 f3 dark-green">
-            <i class="material-icons md-36 mr3">train</i>{{ title }}</h1>
+          <template v-if="title === null">
+            <img src="assets/img/logo.svg" class="h2-5">
+          </template>
+          <template v-else>
+            <h1 class="flex items-center ml3 mv0 f3 dark-green">{{ title }}</h1>
+          </template>
         </div>
       </div>
       <!-- Right -->
@@ -76,7 +80,6 @@
         </div>
       </div>
     </div>
-
 
     <!-- Hero, Station -->
     <div class="flex flex-wrap pt3 pb5 ph5 w-100 bg-black-05 bb b--black-10" id="app-station-statistics" v-if="states.currentView == 'station'">

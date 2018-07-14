@@ -72,7 +72,7 @@ var menuBar = new Vue({
     el: "#menu-bar",
     data: {
         states: states,
-        title: "Bantay Sakay",
+        title: null,
         subtitle: "",
         displayBack: false
     }
@@ -191,7 +191,7 @@ var closeView = function () {
     states.selectedStation = null;
     states.selectedTrip = null;
     states.selectedAttraction = null;
-    menuBar.title = "Bantay Sakay";
+    menuBar.title = null;
     menuBar.displayBack = false;
     resetNodes();
 };
