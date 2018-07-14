@@ -43,15 +43,25 @@ var menuBar = new Vue({
         subtitle: "",
         displayBack: false
     }
-})
+});
+
+var attractionsGeneral = new Vue({
+    el: "#app-attractions-general",
+    data: {
+        attractionsData: [],
+        selectedStation: null
+    }
+});
 
 var trainsUrl = 'http://localhost:5000/api/trains';
 var stationsUrl = 'http://localhost:5000/api/stations';
 var statisticsUrl = 'http://localhost:5000/api/statistics';
+var attractionsUrl = 'http://localhost:5000/api/attractions';
 
 var trainsData = [];
 var stationsData = [];
 var statisticsData = {};
+var attractionsData = {};
 
 var updateData = function () {
     var request = new Request(trainsUrl, { method: 'GET' });
@@ -89,6 +99,20 @@ var updateData = function () {
         statisticsData = data;
     }).catch(error => {
     });
+
+    request = new Request(attractionsUrl, { method: 'GET' });
+    fetch(request).then(response => {
+        if (response.status === 200) {
+            return response.json();
+        } else {
+            console.log("API server could not be reached");
+        }
+    }).then(data => {
+        attractionsGeneral.attractionsData = data;
+    }).catch(error => {
+    });
+
+    console.log(attractionsData);
 }
 
 // Navbar Station Selection Scripts
@@ -104,6 +128,7 @@ var selectStationView = function (e) {
     stationsData.selectedIndex = parseInt(e.target.dataset.index);
     stationStats.selectedStation = stationsData[stationsData.selectedIndex].name;
     globalStats.selectedStation = stationsData[stationsData.selectedIndex].name;
+    attractionsGeneral.selectedStation = stationsData[stationsData.selectedIndex].name;
     stationStats.loadNorth = Math.round(parseFloat(stationsData[stationsData.selectedIndex].loadNorth) * 100);
     stationStats.loadSouth = Math.round(parseFloat(stationsData[stationsData.selectedIndex].loadSouth) * 100);
     menuBar.title = stationStats.selectedStation;
@@ -123,6 +148,7 @@ var closeStationView = function () {
     globalStats.selectedStation = null;
     menuBar.title = "";
     menuBar.displayBack = false;
+    attractionsGeneral.selectedStation = null;
     resetNodes();
 };
 
