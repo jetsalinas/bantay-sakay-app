@@ -9,13 +9,16 @@ var stationStats = new Vue({
     el: "#app-station-statistics",
     data: {
         states: states,
+        etaData: [],
         isNorth: true,
         selectedStation: null,
         selectedIndex: null,
         loadNorth: 75.1,
         loadSouth: 63.2,
-        firstTrainTime: 3.5,
-        secondTrainTime: 5.5
+        etaFirstNorth: null,
+        etaSecondNorth: null,
+        etaFirstSouth: null,
+        etaSecondSouth: null
     }
 })
 
@@ -118,6 +121,7 @@ var updateData = function () {
     var statisticsUrl = 'http://localhost:5000/api/statistics';
     var attractionsUrl = 'http://localhost:5000/api/attractions';
     var tripsUrl = 'http://localhost:5000/api/trips';
+    var etaUrl = 'http://localhost:5000/api/eta';
 
     var request = new Request(trainsUrl, { method: 'GET' });
     fetch(request).then(response => {
@@ -152,6 +156,14 @@ var updateData = function () {
         }
     }).then(data => {
         statisticsData = data;
+        if (data.status == 1) {
+            globalStats.globalStatus = "All stations go!";
+        } else {
+            globalStats.globalStatus = "System down!";
+        }
+        globalStats.globalTrains = data.totalTrains;
+        globalStats.globalCycleTime = Math.round(data.cycleTime/60/60*100)/100;
+        globalStats.globalHeadwayTime = Math.round(data.headwayTime/60*100)/100;
     }).catch(error => {
     });
 
@@ -176,6 +188,22 @@ var updateData = function () {
         }
     }).then(data => {
         featuredTrips.tripsData = data;
+    }).catch(error => {
+    });
+
+    request = new Request(etaUrl, { method: 'GET' });
+    fetch(request).then(response => {
+        if (response.status === 200) {
+            return response.json();
+        } else {
+            console.log("API server could not be reached");
+        }
+    }).then(data => {
+        stationStats.etaData = data;
+        stationStats.etaFirstNorth = Math.round(data.etaFirstNorth/60*100)/100;
+        stationStats.etaSecondNorth = Math.round(data.etaSecondNorth/60*100)/100;
+        stationStats.etaFirstSouth = Math.round(data.etaFirstSouth/60*100)/100;
+        stationStats.etaSecondSouth = Math.round(data.etaSecondSouth/60*100)/100;
     }).catch(error => {
     });
 }
@@ -226,4 +254,4 @@ for (var i = 0; i < trainNodes.length; i++) {
 }
 
 updateData();
-setInterval(updateData, 1000 * 60 * 10);
+setInterval(updateData, 5000);
