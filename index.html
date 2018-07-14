@@ -83,35 +83,33 @@
         <div v-if="!selectedStation" class="fl w-100 pv3 ph5 shadow-1 mv3 mh1">
           <h1>System Overview</h1>
           <div class="fl w-50">
-            <h2>{{ loadNorth }} %</h2>
-            <p class="i">Northbound Passenger Volume</p>
+            <h2>{{ globalStatus }}</h2>
+            <p class="i">System Status</p>
           </div>
           <div class="fl w-50">
-            <h2>{{ loadSouth }} %</h2>
-            <p class="i">Southbound Passenger Volume</p>
+            <h2>{{ globalTrains }} Trains</h2>
+            <p class="i">Trains Available</p>
           </div>
           <div class="fl w-50">
-            <h2>{{ firstTrainTime }}</h2>
-            <p class="i">ETA next train</p>
+            <h2>{{ globalHeadwayTime }} Minutes</h2>
+            <p class="i">Average Headway Time</p>
           </div>
           <div class="fl w-50">
-            <h2>{{ secondTrainTime }}</h2>
-            <p class="i">ETA following train</p>
+            <h2>{{ globalCycleTime }} Hours</h2>
+            <p class="i">Average Cycle Time</p>
           </div>
-        </div>
-        <div v-else>
-          <p class="i">Please select a station.</p>
+
         </div>
       </div>
-    </div>
 
-    <div class="fl w-100 pv3 ph5 shadow-1 mv3">
-      <h1>News</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, sapiente nam laudantium aliquid at temporibus iste
-        possimus quaerat nisi impedit quasi, aliquam rem, iure quia expedita rerum! Quidem ab architecto beatae quos est
-        molestiae dicta, dolores perferendis odit tempore. Molestias hic consequuntur cum vitae quo eius nisi nam omnis sint?
-      </p>
-    </div>
+      <div class="fl w-100 pv3 ph5 shadow-1 mv3">
+        <h1>News</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, sapiente nam laudantium aliquid at temporibus iste
+          possimus quaerat nisi impedit quasi, aliquam rem, iure quia expedita rerum! Quidem ab architecto beatae quos est
+          molestiae dicta, dolores perferendis odit tempore. Molestias hic consequuntur cum vitae quo eius nisi nam omnis
+          sint?
+        </p>
+      </div>
 
   </section>
 
