@@ -159,12 +159,12 @@
         <h2>{{ selectedTrip.description }}</h2>
         <div v-for="node in selectedTrip.nodes">
           <p>{{ node.attraction.name }}</p>
-          <p class="i">{{ node.attraction.stationName }}</p>
+          <p>{{ node.attraction.stationName }}</p>
         </div>
       </div>
       <div class="">
         <div class="mv4 ph6 w-100 flex flex-wrap">
-          <div v-for="trip in tripsData" class="mw5 ba b--black-40 br2">
+          <div v-for="trip in tripsData" class="pa3 mr4 mw5 ba b--black-40 br2">
             <div>
               <h2>{{ trip.name }}</h2>
               <p>{{ trip.description }}</p>
