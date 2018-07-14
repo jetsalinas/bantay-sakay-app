@@ -22,14 +22,14 @@
   <section id="panel" class="flex flex-column flex-wrapitems-stretch black bg-white w-100 shadow-1">
 
     <!-- Top bar -->
-    <Navbar id="menu-bar" v-bind:show-pointer="!(states.currentView=='global')">
+    <navbar id="menu-bar" v-bind:show-pointer="!(states.currentView=='global')">
       <template v-if="title === null">
         <img src="assets/img/logo.svg" class="h2-5">
       </template>
       <template v-else>
         <h1 class="flex items-center ml3 mv0 f3 dark-green">{{ title }}</h1>
       </template>
-    </Navbar>
+    </navbar>
 
     <!-- Hero, Stats -->
     <div class="flex flex-wrap pt3 pb5 w-100 bg-black-05 bb b--black-10" id="app-global-statistics" v-if="states.currentView == 'global'">
@@ -80,25 +80,8 @@
           <img src="assets/img/load-moderate.svg" class="ml2 h2">
           <p class="black-70 ma0 f6 fw9">MODERATE</p>
         </div>
-        <div class="flex items-center justify-between bg-white mv3 ph3 pv3 ba b--black-50 br2">
-          <div class="flex items-center flex-grow-1">
-            <img src="assets/img/train-icon.svg" class="h2 mr2">
-            <i class="material-icons mr2">arrow_upward</i>
-            <h3 class="f4 ma0 black--80">Baclaran</h3>
-          </div>
-          <h3 class="f3 ma0 black--80">{{ etaFirstSouth }}m</h3>
-        </div>
-        <div class="flex items-center justify-between mv3 ph3">
-          <div class="flex items-center flex-grow-1">
-            <img src="assets/img/train-icon.svg" class="h2 mr2">
-            <i class="material-icons mr2">arrow_upward</i>
-            <h3 class="f4 ma0 black--80">Baclaran</h3>
-          </div>
-          {{ }}
-          <h3 class="f3 ma0 black--80">{{ etaSecondSouth }}m</h3>
-        </div>
-        <div class="flex items-center justify-between mv3 ph3">
-        </div>
+        <train-status focus="true" direction="SB" v-bind:time="etaFirstSouth"></train-status>
+        <train-status direction="SB" v-bind:time="etaSecondSouth"></train-status>
       </div>
       <div id="station-right">
         <div class="flex items-center">
@@ -106,22 +89,8 @@
           <img src="assets/img/load-moderate.svg" class="ml2 h2">
           <p class="black-70 ma0 f6 fw9">MODERATE</p>
         </div>
-        <div class="flex items-center justify-between bg-white mv3 ph3 pv3 ba b--black-50 br2">
-          <div class="flex items-center flex-grow-1">
-            <img src="assets/img/train-icon.svg" class="h2 mr2">
-            <i class="material-icons mr2">arrow_upward</i>
-            <h3 class="f4 ma0 black--80">Roosevelt</h3>
-          </div>
-          <h3 class="f3 ma0 black--80">{{ etaFirstNorth }}m</h3>
-        </div>
-        <div class="flex items-center justify-between mv3 ph3">
-          <div class="flex items-center flex-grow-1">
-            <img src="assets/img/train-icon.svg" class="h2 mr2">
-            <i class="material-icons mr2">arrow_upward</i>
-            <h3 class="f4 ma0 black--80">Roosevelt</h3>
-          </div>
-          <h3 class="f3 ma0 black--80">{{ etaSecondNorth }}m</h3>
-        </div>
+        <train-status focus="true" direction="NB" v-bind:time="etaFirstNorth"></train-status>
+        <train-status direction="NB" v-bind:time="etaSecondNorth"></train-status>
         <div class="flex items-center justify-between mv3 ph3">
           <div class="flex items-center flex-grow-1">
             <img src="assets/img/train-icon-skip.svg" class="h2 mr2">
