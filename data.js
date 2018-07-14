@@ -1,0 +1,22 @@
+var stations = [
+    "Roosevelt",
+    "Balintawak",
+    "Monumento",
+    "5th Avenue",
+    "R. Papa",
+    "Abad Santos",
+    "Blumentritt",
+    "Tayuman",
+    "Bambang",
+    "Doroteo Jose",
+    "Carriedo",
+    "Central Terminal",
+    "United Nations",
+    "Pedro Gil",
+    "Quirino",
+    "Vito Cruz",
+    "Gil Puyat",
+    "Libertad",
+    "EDSA",
+    "Baclaran"
+]
