@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 372 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-1273,-155)">
+        <g id="Moderate-Load" serif:id="Moderate Load" transform="matrix(2.90625,0,0,1,1273,155)">
+            <rect x="0" y="0" width="128" height="128" style="fill:none;"/>
+            <g transform="matrix(0.312805,0,0,0.909091,14.4203,-1.36364)">
+                <circle cx="59.5" cy="67.5" r="27.5" style="fill:rgb(255,190,0);"/>
+            </g>
+            <g transform="matrix(0.312805,0,0,0.909091,45.3881,-1.36364)">
+                <circle cx="59.5" cy="67.5" r="27.5" style="fill:rgb(255,190,0);"/>
+            </g>
+            <g transform="matrix(0.312805,0,0,0.909091,76.3558,-1.36364)">
+                <circle cx="59.5" cy="67.5" r="27.5" style="fill:rgb(205,216,221);"/>
+            </g>
+        </g>
+    </g>
+</svg>

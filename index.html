@@ -19,10 +19,10 @@
 <body class="flex flex-wrap content-stretch items-stretch cabin">
 
   <!-- Panel -->
-  <section id="panel" class="flex flex-column flex-wrapitems-stretch black bg-white vw-100 shadow-1">
+  <section id="panel" class="flex flex-column flex-wrapitems-stretch black bg-white w-100 shadow-1">
 
     <!-- Top bar -->
-    <div id="top" class="flex flex-nowrap justify-between pv3-ns pv2 ph3 ph4-ns white bg-purple vw-100 shadow-1">
+    <div id="top" class="flex flex-nowrap justify-between pv3-ns pv2 ph3 ph4-ns white bg-purple w-100 shadow-1">
       <!-- Left -->
       <div id="topleft" class="flex items-center">
         <div id="menu-bar" class="flex items-center mv2 mv1-ns">
@@ -39,24 +39,24 @@
     </div>
 
     <!-- Hero, Stats -->
-    <div class="flex flex-wrap flex-nowrap-ns pv5 vw-100 bg-black-05" id="app-global-statistics" v-if="!selectedStation">
-      <div class="dn db-ns mh6 flex items-center">
+    <div class="flex flex-wrap pv5 w-100 bg-black-05" id="app-global-statistics" v-if="!selectedStation">
+      <div class="mh6 flex items-center">
         <img src="assets/img/death-01.svg" class="h5">
       </div>
-      <div class="w-auto-ns flex-auto-ns">
+      <div>
         <div class="mb3">
           <h2 class="f1 mv1">{{ globalStatus }}</h2>
         </div>
-        <div class="flex items-center ml4 mv2 ">
-          <img src="assets/img/train-icon.svg " class="h2 mr2 ">
+        <div class="flex items-center ml4 mv2">
+          <img src="assets/img/train-icon.svg " class="h2 mr2">
           <h2 class="mr4 mv0 w4-5">To Baclaran</h2>
-          <img src="assets/img/load-light.svg " class="ml2 h2 ">
+          <img src="assets/img/load-light.svg " class="ml2 h2">
           <p class="black-70 ma0 f6 fw9">LIGHT</p>
         </div>
-        <div class="flex items-center ml4 mv2 ">
-          <img src="assets/img/train-icon.svg " class="h2 mr2 ">
+        <div class="flex items-center ml4 mv2">
+          <img src="assets/img/train-icon.svg" class="h2 mr2">
           <h2 class="mr4 mv0 w4-5">To Roosevelt</h2>
-          <img src="assets/img/load-light.svg " class="ml2 h2 ">
+          <img src="assets/img/load-light.svg" class="ml2 h2">
           <p class="black-70 ma0 f6 fw9">LIGHT</p>
         </div>
         <div class="flex ml4 mt4">
@@ -77,7 +77,7 @@
     </div>
 
     <!-- Hero, Station -->
-    <div class="flex flex-wrap flex-nowrap-ns pv5 ph5 vw-100 bg-black-05" id="app-station-statistics" v-if="selectedStation">
+    <div class="flex flex-wrap pv5 ph5 w-100 bg-black-05" id="app-station-statistics" v-if="selectedStation">
       <div class="dn db-ns mh6 flex items-center">
         <img src="assets/img/death-01.svg" class="h5">
       </div>
@@ -151,22 +151,34 @@
       </div>
     </div>
 
-    <h1 class="mh6 mv4">Featured Trips</h1>
+    <!-- Station/Attractions -->
+    <div class="mv4 ph6 w-100">
+      <h2 class="ttu f5">Attractions</h2>
+      <div class="mw5 ba b--black-40 br2">
+        <img src="http://placekitten.com/g/600/500" class="db w-auto br2 br--top" alt="Photo of a kitten looking menacing.">
+        <div class="card-bottom ph3">
+          <h3 class="f3">Rizal Park</h3>
+          <p>I booped the twinko!!! I booped the twinko!!! I booped the twinko!!! I booped the twinko!!! I booped the twinko!!!</p>
+        </div>
+      </div>
+    </div>
+
     <div id="app-featured-trips">
-        <div class="pa4 mh6 shadow-1" v-if="hasSelected">
-            <h1>{{ selectedTrip.name }}</h1>
-            <h2>{{ selectedTrip.description }}</h2>
-            <div v-for="node in selectedTrip.nodes">
-              <p>{{ node.attraction.name }}</p>
-              <p class="i">{{ node.attraction.stationName }}</p>
-            </div>
+      <h1 class="mh6 mv4">Featured Trips</h1>
+      <div class="pa4 mh6 shadow-1" v-if="hasSelected">
+        <h1>{{ selectedTrip.name }}</h1>
+        <h2>{{ selectedTrip.description }}</h2>
+        <div v-for="node in selectedTrip.nodes">
+          <p>{{ node.attraction.name }}</p>
+          <p class="i">{{ node.attraction.stationName }}</p>
         </div>
-        <div  class="flex mh6 mv4">
-          <div v-for="trip in tripsData" class="pa4 mh2 shadow-1 w-25" v-on:click="selectTrip( trip.name )">
-            <h2>{{ trip.name }}</h2>
-            <p>{{ trip.description }}</p>
-          </div>
+      </div>
+      <div class="flex mh6 mv4">
+        <div v-for="trip in tripsData" class="pa4 mh2 shadow-1 w-25" v-on:click="selectTrip( trip.name )">
+          <h2>{{ trip.name }}</h2>
+          <p>{{ trip.description }}</p>
         </div>
+      </div>
     </div>
 
     <div id="app-featured-attractions">
@@ -178,38 +190,42 @@
 
   <sidebar class="white bg-black-90 h-100" id="menu">
 
-    <div class="ml4 ">
-      <h1 class="f3 mt3 mb1 ">Train status</h1>
+    <div class="ml4">
+      <h1 class="f3 mt3 mb1">Train status</h1>
     </div>
-    
+
     <ul class="db h-100 list pa0 pl3 ml4 mv0">
-      <li class="mv0 flex items-center train train-light" data-index="19 ">Roosevelt</li>
-      <li class="mv0 flex items-center train train-light" data-index="18 ">Balintawak</li>
-      <li class="mv0 flex items-center train train-light" data-index="17 ">Monumento</li>
-      <li class="mv0 flex items-center train train-light" data-index="16 ">5th Avenue</li>
-      <li class="mv0 flex items-center train train-light" data-index="15 ">R. Papa</li>
-      <li class="mv0 flex items-center train train-light" data-index="14 ">Abad Santos</li>
-      <li class="mv0 flex items-center train train-light" data-index="13 ">Blumentritt</li>
-      <li class="mv0 flex items-center train train-light" data-index="12 ">Tayuman</li>
-      <li class="mv0 flex items-center train train-light" data-index="11 ">Bambang</li>
-      <li class="mv0 flex items-center train train-light" data-index="10 ">Doroteo Jose</li>
-      <li class="mv0 flex items-center train train-light" data-index="9 ">Carriedo</li>
-      <li class="mv0 flex items-center train train-light" data-index="8 ">Central Terminal</li>
-      <li class="mv0 flex items-center train train-light" data-index="7 ">United Nations</li>
-      <li class="mv0 flex items-center train train-light" data-index="6 ">Pedro Gil</li>
-      <li class="mv0 flex items-center train train-light" data-index="5 ">Quirino</li>
-      <li class="mv0 flex items-center train train-light" data-index="4 ">Vito Cruz</li>
-      <li class="mv0 flex items-center train train-light" data-index="3 ">Gil Puyat</li>
-      <li class="mv0 flex items-center train train-light" data-index="2 ">Libertad</li>
-      <li class="mv0 flex items-center train train-light" data-index="1 ">EDSA</li>
-      <li class="mv0 flex items-center train train-light" data-index="0 ">Baclaran</li>
+      <li class="mv0 flex items-center train train-light" data-index="19">Roosevelt</li>
+      <li class="mv0 flex items-center train train-light" data-index="18">Balintawak</li>
+      <li class="mv0 flex items-center train train-light" data-index="17">Monumento</li>
+      <li class="mv0 flex items-center train train-light" data-index="16">5th Avenue</li>
+      <li class="mv0 flex items-center train train-light" data-index="15">R. Papa</li>
+      <li class="mv0 flex items-center train train-light" data-index="14">Abad Santos</li>
+      <li class="mv0 flex items-center train train-light" data-index="13">Blumentritt</li>
+      <li class="mv0 flex items-center train train-light" data-index="12">Tayuman</li>
+      <li class="mv0 flex items-center train train-light" data-index="11">Bambang</li>
+      <li class="mv0 flex items-center train train-light" data-index="10">Doroteo Jose</li>
+      <li class="mv0 flex items-center train train-light" data-index="9">Carriedo</li>
+      <li class="mv0 flex items-center train train-light" data-index="8">Central Terminal</li>
+      <li class="mv0 flex items-center train train-light" data-index="7">United Nations</li>
+      <li class="mv0 flex items-center train train-light" data-index="6">Pedro Gil</li>
+      <li class="mv0 flex items-center train train-light" data-index="5">Quirino</li>
+      <li class="mv0 flex items-center train train-light" data-index="4">Vito Cruz</li>
+      <li class="mv0 flex items-center train train-light" data-index="3">Gil Puyat</li>
+      <li class="mv0 flex items-center train train-light" data-index="2">Libertad</li>
+      <li class="mv0 flex items-center train train-light" data-index="1">EDSA</li>
+      <li class="mv0 flex items-center train train-light" data-index="0">Baclaran</li>
     </ul>
   </sidebar>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js "></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js "></script>
-  <script src="nav.js "></script>
-  <script src="app.js "></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <script src="nav.js"></script>
+  <script src="app.js"></script>
+
+  <!-- VUE COMPONENTS -->
+  <script src="data.js"></script>
+  <script src="components.js"></script>
 
 </body>
 </html>

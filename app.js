@@ -28,9 +28,9 @@ var featuredTrips = new Vue({
         "tripsData": [],
         "hasSelected": false,
         "selectedTrip": []
-    }, methods : {
-        "selectTrip": function(tripName) {
-            for(trip in featuredTrips.tripsData) {
+    }, methods: {
+        "selectTrip": function (tripName) {
+            for (trip in featuredTrips.tripsData) {
                 if (featuredTrips.tripsData[trip].name == tripName) {
                     featuredTrips.selectedTrip = featuredTrips.tripsData[trip];
                     featuredTrips.hasSelected = true;
@@ -176,10 +176,10 @@ for (var i = 0; i < trainNodes.length; i++) {
     trainNodes[i].addEventListener("click", selectStationView, false);
 }
 
-var selectTrip = function(e) {
+var selectTrip = function (e) {
     tripName = e.dataset.name;
     console.log(featuredTrips.tripsData);
-    for(trip in featuredTrips.tripsData) {
+    for (trip in featuredTrips.tripsData) {
         console.log(featuredTrips.tripsData[trip]);
     }
 }
