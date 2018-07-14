@@ -25,7 +25,18 @@ var globalStats = new Vue({
 var featuredTrips = new Vue({
     el: "#app-featured-trips",
     data: {
-        "tripsData": []
+        "tripsData": [],
+        "hasSelected": false,
+        "selectedTrip": []
+    }, methods : {
+        "selectTrip": function(tripName) {
+            for(trip in featuredTrips.tripsData) {
+                if (featuredTrips.tripsData[trip].name == tripName) {
+                    featuredTrips.selectedTrip = featuredTrips.tripsData[trip];
+                    featuredTrips.hasSelected = true;
+                }
+            }
+        }
     }
 });
 
@@ -35,14 +46,6 @@ var menuBar = new Vue({
         title: "Bantay Sakay",
         subtitle: "",
         displayBack: false
-    }
-});
-
-var attractionsGeneral = new Vue({
-    el: "#app-attractions-general",
-    data: {
-        attractionsData: [],
-        selectedStation: null
     }
 });
 
@@ -137,8 +140,6 @@ var selectStationView = function (e) {
     stationStats.loadSouth = Math.round(parseFloat(stationsData[stationsData.selectedIndex].loadSouth) * 100);
     menuBar.title = stationStats.selectedStation;
     menuBar.displayBack = true;
-
-
 }
 
 var resetNodes = function () {
@@ -167,13 +168,6 @@ var trainNodes = document.querySelectorAll('.train');
 for (var i = 0; i < trainNodes.length; i++) {
     trainNodes[i].addEventListener("click", selectStationView, false);
 }
-
-var displayTrip = new Vue({
-    el: "#app-selected-trip",
-    data: {
-        "selectedTrip": []
-    }
-});
 
 var selectTrip = function(e) {
     tripName = e.dataset.name;

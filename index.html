@@ -151,14 +151,26 @@
       </div>
     </div>
 
-
-    <div id="app-featured-trips" class="mh6 mv4">
-      <div v-for="trip in tripsData" class="pa4 shadow-1 w-30">
-        <p>{{ trip.name}}</p>
-        <p>{{ trip.description }}</p>
-      </div>
+    <h1 class="mh6 mv4">Featured Trips</h1>
+    <div id="app-featured-trips">
+        <div class="pa4 mh6 shadow-1" v-if="hasSelected">
+            <h1>{{ selectedTrip.name }}</h1>
+            <h2>{{ selectedTrip.description }}</h2>
+            <div v-for="node in selectedTrip.nodes">
+              <p>{{ node.attraction.name }}</p>
+              <p class="i">{{ node.attraction.stationName }}</p>
+            </div>
+        </div>
+        <div  class="flex mh6 mv4">
+          <div v-for="trip in tripsData" class="pa4 mh2 shadow-1 w-25" v-on:click="selectTrip( trip.name )">
+            <h2>{{ trip.name }}</h2>
+            <p>{{ trip.description }}</p>
+          </div>
+        </div>
     </div>
+
   </section>
+
 
   <sidebar class="white bg-black-90 h-100" id="menu">
 
