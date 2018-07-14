@@ -35,6 +35,17 @@ var tripStats = new Vue({
     el: "#app-trip-statistics",
     data: {
         states: states
+    }, methods: {
+        "selectAttraction": function(attractionName) {
+            for (attraction in featuredAttractions.attractionsData) {
+                if (featuredAttractions.attractionsData[attraction].name == attractionName) {
+                    featuredAttractions.states.selectedAttraction = featuredAttractions.attractionsData[attraction];
+                    featuredAttractions.hasSelected = true;
+                    states.currentView = "attractions";
+                    console.log(states.selectedAttraction);
+                }
+            }
+        }
     }
 });
 

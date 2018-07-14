@@ -164,7 +164,7 @@
         <p>{{ states.selectedTrip.description }}</p>
         <h3>In this trip:</h3>
         <div class="mv4 w-100 flex flex-wrap">
-          <div class="w5 ba b--black-40 br2 mr4" v-for="node in states.selectedTrip.nodes">
+          <div class="w5 ba b--black-40 br2 mr4" v-for="node in states.selectedTrip.nodes" v-on:click="selectAttraction(node.attraction.name)">
             <div class="aspect-ratio aspect-ratio--16x9 br2 br--top">
               <div class="aspect-ratio--object cover" v-bind:style="{ background: 'url(' + node.attraction.imageUrl + ')' }"></div>
            </div>
