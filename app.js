@@ -1,14 +1,4 @@
-// Navbar Toggle button
-var slideout = new Slideout({
-    'panel': document.getElementById('panel'),
-    'menu': document.getElementById('menu'),
-    'padding': 300,
-    'tolerance': 70
-});
 
-document.querySelector('.toggle-button').addEventListener('click', function () {
-    slideout.toggle();
-});
 
 //Vue definitions
 
@@ -29,8 +19,8 @@ var globalStats = new Vue({
     el: "#app-global-statistics",
     data: {
         globalStatus: "All systems go!",
-        globalTrains: 27,
-        globalHeadwayTime: 3.5,
+        globalTrains: 29,
+        globalHeadwayTime: 3.3,
         globalCycleTime: 1.5,
         selectedStation: null
     }

@@ -1,30 +1,94 @@
 <!DOCTYPE html>
 <html>
 <head>
+
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Bantay Sakay</title>
 
-  <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
-  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin">
+  <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="menu.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="md.css">
 
 </head>
 <body class="flex flex-wrap content-stretch items-stretch cabin">
 
-  <section class="white bg-black-90 h-100 pl4" id="menu">
+  <section id="panel" class="flex flex-column flex-wrapitems-stretch black bg-white vw-100 shadow-1">
 
-    <div class="">
+    <!-- Menu toggle -->
+    <div id="top" class="flex flex-nowrap justify-between ph4 white bg-purple vw-100 shadow-1">
+      <div id="topleft" class="mv3 flex items-center">
+        <div id="menu-bar" class="flex items-center mv2">
+          <div class="fl ml3 mr1 v-mid pointer" id="closeStationBtn" v-if="displayBack" onclick="closeStationView()">
+            <i class="material-icons md-36 f2">arrow_back</i>
+          </div>
+          <h1 class="ml3 mv0">{{ title }}</h1>
+        </div>
+      </div>
+      <div id="topright" class="mv3 flex items-center">
+        <i id="toggle-train-list" class="material-icons md-36 pointer">train</i>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap flex-nowrap-ns pv5 vw-100 bg-black-05" id="app-global-statistics" v-if="!selectedStation">
+      <div class="dn db-ns mh6 flex items-center">
+        <img src="assets/img/death-01.svg " class="h5">
+      </div>
+      <div class="w-auto-ns flex-auto-ns">
+        <div class="mb3">
+          <h2 class="f1 mv1">{{ globalStatus }}</h2>
+        </div>
+        <div class="flex items-center ml4 mv2 ">
+          <img src="assets/img/train-icon.svg " class="h2 mr2 ">
+          <h2 class="mr4 mv0 w4-5">To Baclaran</h2>
+          <img src="assets/img/load-light.svg " class="ml2 h2 ">
+          <p class="black-70 ma0 f6 fw9">LIGHT</p>
+        </div>
+        <div class="flex items-center ml4 mv2 ">
+          <img src="assets/img/train-icon.svg " class="h2 mr2 ">
+          <h2 class="mr4 mv0 w4-5">To Roosevelt</h2>
+          <img src="assets/img/load-light.svg " class="ml2 h2 ">
+          <p class="black-70 ma0 f6 fw9">LIGHT</p>
+        </div>
+        <div class="flex ml4 mt4">
+          <div class="mr5">
+            <h2 class="mv0">{{ globalTrains }}</h2>
+            <p class="mv1 black-70 f6">trains running</p>
+          </div>
+          <div class="mr5 ">
+            <h2 class="mv0 ">{{ globalHeadwayTime }} min</h2>
+            <p class="mv1 black-70 f6">Headway</p>
+          </div>
+          <div class="mr5 ">
+            <h2 class="mv0 ">{{ globalCycleTime }} hrs</h2>
+            <p class="mv1 black-70 f6">Cycle time</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap ph5" v-if="selectedStation" id="app-station-statistics">
+    </div>
+
+    </div>
+
+  </section>
+
+  <sidebar class="white bg-black-90 h-100" id="menu">
+
+    <div class="ml4">
       <h1 class="f3 mt3 mb1">Train status</h1>
       <p class="dib f6 ttu mv2 white-80">To Baclaran</p>
       <p class="dib f6 ttu mv2 white-80">&bull;</p>
       <p class="dib f6 ttu mv2 white-80">To Roosevelt</p>
     </div>
 
-    <ul class="db h-100 list pa0 pl3 ml2 mv0">
+    <ul class="db h-100 list pa0 pl3 ml4 mv0">
       <li class="mv0 flex items-center train train-light" data-index="19">Roosevelt</li>
       <li class="mv0 flex items-center train train-light" data-index="18">Balintawak</li>
       <li class="mv0 flex items-center train train-light" data-index="17">Monumento</li>
@@ -46,87 +110,12 @@
       <li class="mv0 flex items-center train train-light" data-index="1">EDSA</li>
       <li class="mv0 flex items-center train train-light" data-index="0">Baclaran</li>
     </ul>
-  </section>
-
-  <section id="panel" class="flex flex-column items-stretch flex-wrap black bg-white vw-100">
-
-    <!-- Menu toggle -->
-    <div id="top" class="white bg-dark-green vw-100">
-      <div class="mv3 flex items-center">
-        <img src="assets/img/menu-close.svg" class="h-menu pv2 ph0 toggle-button">
-        <div id="menu-bar" class="flex items-center mv2">
-          <div class="fl ml3 mr1 v-mid pointer" id="closeStationBtn" v-if="displayBack" onclick="closeStationView()">
-            <i class="material-icons f2">arrow_back</i>
-          </div>
-          <h1 class="ml3 mv0">{{ title }}</h1>
-        </div>
-      </div>
-
-      <div class="flex flex-wrap flex-nowrap-ns mv4" id="app-global-statistics" v-if="!selectedStation">
-        <div class="dn db-ns mh6 flex items-center">
-          <img src="assets/img/death-01.svg " class="h5">
-        </div>
-        <div class="w-auto-ns flex-auto-ns">
-          <div class="mb3">
-            <h2 class="f1 mv1">{{ globalStatus }}</h2>
-          </div>
-          <div class="flex items-center ml4 mv2 ">
-            <img src="assets/img/train-icon.svg " class="h2 mr2 ">
-            <h2 class="mr4 mv0 w4-5">To Baclaran</h2>
-            <img src="assets/img/load-light.svg " class="ml2 h2 ">
-            <p class="white-70 ma0 f6 fw9">LIGHT</p>
-          </div>
-          <div class="flex items-center ml4 mv2 ">
-            <img src="assets/img/train-icon.svg " class="h2 mr2 ">
-            <h2 class="mr4 mv0 w4-5">To Roosevelt</h2>
-            <img src="assets/img/load-light.svg " class="ml2 h2 ">
-            <p class="white-70 ma0 f6 fw9">LIGHT</p>
-          </div>
-          <div class="flex ml4 mt4">
-            <div class="mr5">
-              <h2 class="mv0">{{ globalTrains }}</h2>
-              <p class="mv1 white-70 f6">trains running</p>
-            </div>
-            <div class="mr5 ">
-              <h2 class="mv0 ">{{ globalHeadwayTime }} min</h2>
-              <p class="mv1 white-70 f6">Headway</p>
-            </div>
-            <div class="mr5 ">
-              <h2 class="mv0 ">{{ globalCycleTime }} hrs</h2>
-              <p class="mv1 white-70 f6">Cycle time</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="flex flex-wrap ph5" v-if="selectedStation" id="app-station-statistics">
-      </div>
-
-    </div>
-
-    <div>
-
-    </div>
-
-    <div id="app-attractions-general">
-      <div class="flex mh6 mv3 mv4">
-        <div v-for="attractions in attractionsData">
-          <div class="h-20 ma3 shadow-1"  v-if="selectedStation">
-            <img class="h-10" v-bind:src="attractions.imageUrl">
-            <div class="pa3">
-              <h2>{{attractions.name}}</h2>
-              <p>{{attractions.stationName}}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </section>
+  </sidebar>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js "></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js "></script>
-  <script src="app.js "></script>
+  <script src="nav.js"></script>
+  <script src="app.js"></script>
 
 </body>
 </html>
