@@ -1,6 +1,14 @@
+const states = {
+    currentView: "global",
+    selectedStation: null,
+    selectedTrip: null,
+    selectedAttraction: null
+}
+
 var stationStats = new Vue({
     el: "#app-station-statistics",
     data: {
+        states: states,
         isNorth: true,
         selectedStation: null,
         selectedIndex: null,
@@ -14,6 +22,7 @@ var stationStats = new Vue({
 var globalStats = new Vue({
     el: "#app-global-statistics",
     data: {
+        states: states,
         globalStatus: "All systems go!",
         globalTrains: 29,
         globalHeadwayTime: 3.3,
@@ -25,6 +34,7 @@ var globalStats = new Vue({
 var featuredTrips = new Vue({
     el: "#app-featured-trips",
     data: {
+        states: states,
         "tripsData": [],
         "hasSelected": false,
         "selectedTrip": []
@@ -32,8 +42,8 @@ var featuredTrips = new Vue({
         "selectTrip": function (tripName) {
             for (trip in featuredTrips.tripsData) {
                 if (featuredTrips.tripsData[trip].name == tripName) {
-                    featuredTrips.selectedTrip = featuredTrips.tripsData[trip];
-                    featuredTrips.hasSelected = true;
+                    //featuredTrips.selectedTrip = featuredTrips.tripsData[trip];
+                    featuredTrips.hasSelected = !(featuredTrips.hasSelected);
                 }
             }
         }
@@ -43,6 +53,7 @@ var featuredTrips = new Vue({
 var featuredAttractions = new Vue({
     el: "#app-featured-attractions",
     data: {
+        states: states,
         "attractionsData": [],
         "hasSelected": false,
         "selectedAttraction": []
@@ -52,6 +63,7 @@ var featuredAttractions = new Vue({
 var menuBar = new Vue({
     el: "#menu-bar",
     data: {
+        states: states,
         title: "Bantay Sakay",
         subtitle: "",
         displayBack: false
@@ -141,8 +153,7 @@ var selectStationView = function (e) {
     e.target.classList.remove('train-inactive');
     e.target.classList.add('train-active');
     stationsData.selectedIndex = parseInt(e.target.dataset.index);
-    stationStats.selectedStation = stationsData[stationsData.selectedIndex].name;
-    globalStats.selectedStation = stationsData[stationsData.selectedIndex].name;
+    states.selectedStation = stationsData[stationsData.selectedIndex].name;
     stationStats.loadNorth = Math.round(parseFloat(stationsData[stationsData.selectedIndex].loadNorth) * 100);
     stationStats.loadSouth = Math.round(parseFloat(stationsData[stationsData.selectedIndex].loadSouth) * 100);
     menuBar.title = stationStats.selectedStation;
@@ -158,12 +169,11 @@ var resetNodes = function () {
 }
 
 var closeStationView = function () {
-    stationStats.selectedStation = null;
-    stationStats.selectedIndex = null;
-    globalStats.selectedStation = null;
+    states.selectedStation = null;
     menuBar.title = "Bantay Sakay";
     menuBar.displayBack = false;
     attractionsGeneral.selectedStation = null;
+
     resetNodes();
 };
 
