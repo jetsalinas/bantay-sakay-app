@@ -46,15 +46,6 @@ var attractionsGeneral = new Vue({
     }
 });
 
-<<<<<<< HEAD
-var trainsUrl = 'http://localhost:5000/api/trains';
-var stationsUrl = 'http://localhost:5000/api/stations';
-var statisticsUrl = 'http://localhost:5000/api/statistics';
-var attractionsUrl = 'http://localhost:5000/api/attractions';
-var tripsUrl = 'http://localhost:5000/api/trips';
-
-=======
->>>>>>> 20e656e1092a8bea3f9569daf37ad82ff753bb7d
 var trainsData = [];
 var stationsData = [];
 var statisticsData = {};
