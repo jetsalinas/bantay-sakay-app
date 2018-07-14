@@ -126,10 +126,10 @@
       <img class="fl h3 ma0" src="assets/img/train-horizontal-light-e.svg">
     </div>
 
-    <div id="app-attractions-general" v-if="!selectedStation">
+    <div id="app-attractions-general">
       <div class="flex mh6 mv3 mv4">
         <div v-for="attractions in attractionsData">
-          <div class="w-30 shadow-1">
+          <div class="shadow-1"  v-if="selectedStation">
             <img v-bind:src="attractions.imageUrl">
             <h2>{{attractions.name}}</h2>
             <p>{{attractions.stationName}}</p>
